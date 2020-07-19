@@ -1,5 +1,8 @@
-"Zenbun theme
+" Zenburn color scheme
 colors zenburn
+
+" Enable mouse support
+set mouse=a
 
 " YCM installation function
 function! BuildYCM(info)
@@ -25,3 +28,6 @@ set laststatus=2
 autocmd FileType markdown setlocal textwidth=72
 autocmd FileType markdown setlocal spell
 autocmd FileType markdown setlocal complete+=kspell
+
+" Debug YCM
+let g:ycm_log_level='debug'
