@@ -15,10 +15,18 @@ function! BuildYCM(info)
 	endif
 endfunction
 
+" =======
 " Plugins
+" =======
 call plug#begin()
+" GPG support
 Plug 'jamessan/vim-gnupg'
+" YouCompleteMe
 Plug 'ycm-core/YouCompleteMe', { 'do': function('BuildYCM') }
+" ASyncRun. Run commands asynchronously and get results in QuickFix list.
+Plug 'skywind3000/asyncrun.vim'
+" CMake support
+Plug 'vhdirk/vim-cmake'
 call plug#end()
 
 " Default list of recipients for GPG
@@ -45,6 +53,13 @@ autocmd FileType markdown setlocal complete+=kspell
 autocmd FileType gitcommit setlocal spell
 autocmd FileType gitcommit setlocal complete+=kspell
 
+" Autowrite before make (among others)
+set autowrite
+
+" Automatically go to QuickFix window if not empty
+autocmd QuickFixCmdPost [^l]* nested cwindow
+autocmd QuickFixCmdPost    l* nested lwindow
+
 " Debug YCM
 let g:ycm_log_level='debug'
 
@@ -64,7 +79,17 @@ function DateTimeStringNoSpace()
 	return strftime("%Y-%m-%d_%H%M")
 endfunction
 
+" ==================
 " Keyboard shortcuts
+" ==================
+" Alternate spellcheck language
 autocmd FileType markdown nnoremap <buffer> <F5> :call AlternateSpelllang()<CR>
+" Insert date and time with no space
 cnoremap <expr> <Leader>dt DateTimeStringNoSpace()
+" Insert markdown and GPG extension, open the file, and accept the default list of recipients
 cnoremap <Leader>nmd .md.gpg<CR>:q<CR>
+" Compile
+nnoremap <F7> :make<CR>
+" Previous and next quick fix
+nnoremap <F3> :cprevious<CR>
+nnoremap <F4> :cnext<CR>
