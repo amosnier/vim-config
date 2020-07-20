@@ -21,8 +21,16 @@ Plug 'jamessan/vim-gnupg'
 Plug 'ycm-core/YouCompleteMe', { 'do': function('BuildYCM') }
 call plug#end()
 
+" Default list of recipients for GPG
+let g:GPGDefaultRecipients=[ 'alain@wanamoon.net' ]
+
 " Statusline always on
 set laststatus=2
+
+" Disable key mapping timeout, since I will use <Leader> or otherwise unmapped
+" keys. But ensure that ttiemout is not, since it is necessary for Esc.
+set notimeout
+set ttimeout
 
 " Decrease time-out to remove pause when leaving insert mode (see
 " https://github.com/vim-airline/vim-airline/wiki/FAQ).
@@ -51,5 +59,12 @@ function AlternateSpelllang()
 	endif
 endfunction
 
+" Return a date and time string that can be used in a file name
+function DateTimeStringNoSpace()
+	return strftime("%Y-%m-%d_%H%M")
+endfunction
+
 " Keyboard shortcuts
 autocmd FileType markdown nnoremap <buffer> <F5> :call AlternateSpelllang()<CR>
+cnoremap <expr> <Leader>dt DateTimeStringNoSpace()
+cnoremap <Leader>nmd .md.gpg<CR>:q<CR>
