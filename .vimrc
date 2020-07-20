@@ -33,5 +33,23 @@ autocmd FileType markdown setlocal textwidth=72
 autocmd FileType markdown setlocal spell
 autocmd FileType markdown setlocal complete+=kspell
 
+" Settings for gitcommit
+autocmd FileType gitcommit setlocal spell
+autocmd FileType gitcommit setlocal complete+=kspell
+
 " Debug YCM
 let g:ycm_log_level='debug'
+
+" Function that alternates the spelling language
+function AlternateSpelllang()
+	if &spelllang ==# 'en'
+		setlocal spelllang=fr
+	elseif &spelllang ==# 'fr'
+		setlocal spelllang=sv
+	else
+		setlocal spelllang=en
+	endif
+endfunction
+
+" Keyboard shortcuts
+autocmd FileType markdown nnoremap <buffer> <F5> :call AlternateSpelllang()<CR>
