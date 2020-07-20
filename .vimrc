@@ -24,6 +24,10 @@ call plug#end()
 " Statusline always on
 set laststatus=2
 
+" Decrease time-out to remove pause when leaving insert mode (see
+" https://github.com/vim-airline/vim-airline/wiki/FAQ).
+set ttimeoutlen=10
+
 " Settings for Markdown
 autocmd FileType markdown setlocal textwidth=72
 autocmd FileType markdown setlocal spell
