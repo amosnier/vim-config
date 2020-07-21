@@ -79,11 +79,25 @@ function DateTimeStringNoSpace()
 	return strftime("%Y-%m-%d_%H%M")
 endfunction
 
+" Function to map keys for YCM
+function MapYcmKeys()
+	nnoremap <buffer> <Leader>yt :YcmCompleter GetType<CR>
+	nnoremap <buffer> <C-t> :YcmCompleter GetType<CR>
+	nnoremap <buffer> <Leader>yf :YcmCompleter FixIt<CR>
+	nnoremap <buffer> <Leader>yg :YcmCompleter GoTo<CR>
+	nnoremap <buffer> <C-]> :YcmCompleter GoTo<CR>
+	nnoremap <buffer> <C-LeftMouse> <LeftMouse>:YcmCompleter GoTo<CR>
+	nnoremap <buffer> <Leader>yd :YcmCompleter GetDoc<CR>
+	nnoremap <buffer> <Leader>yr :YcmCompleter GoToReferences<CR>
+	nnoremap <buffer> <C-[> :YcmCompleter GoToReferences<CR>
+	nnoremap <buffer> <Leader>ys :<C-u>execute 'YcmCompleter GoToSymbol '.input('Symbol: ')<CR>
+endfunction
+
 " ==================
 " Keyboard shortcuts
 " ==================
 " Alternate spellcheck language
-autocmd FileType markdown nnoremap <buffer> <F5> :call AlternateSpelllang()<CR>
+autocmd FileType markdown nnoremap <buffer> <F2> :call AlternateSpelllang()<CR>
 " Insert date and time with no space
 cnoremap <expr> <Leader>dt DateTimeStringNoSpace()
 " Insert markdown and GPG extension, open the file, and accept the default list of recipients
@@ -93,3 +107,6 @@ nnoremap <F7> :make<CR>
 " Previous and next quick fix
 nnoremap <F3> :cprevious<CR>
 nnoremap <F4> :cnext<CR>
+" YCM mappings
+autocmd Filetype c   call MapYcmKeys()
+autocmd Filetype cpp call MapYcmKeys()
