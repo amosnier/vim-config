@@ -31,6 +31,7 @@ set ttimeoutlen=10
 autocmd FileType markdown setlocal textwidth=72
 autocmd FileType markdown setlocal spell
 autocmd FileType markdown setlocal complete+=kspell
+autocmd FileType markdown setlocal autoindent
 
 " Settings for gitcommit
 autocmd FileType gitcommit setlocal spell
