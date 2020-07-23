@@ -55,15 +55,11 @@ set ttimeout
 " https://github.com/vim-airline/vim-airline/wiki/FAQ).
 set ttimeoutlen=10
 
-" Settings for Markdown
+" Settings for various file types
 autocmd FileType markdown setlocal textwidth=72
-autocmd FileType markdown setlocal spell
-autocmd FileType markdown setlocal complete+=kspell
+autocmd FileType markdown,gitcommit,c,cpp,vim setlocal spell
+autocmd FileType markdown,gitcommit setlocal complete+=kspell
 autocmd FileType markdown setlocal autoindent
-
-" Settings for gitcommit
-autocmd FileType gitcommit setlocal spell
-autocmd FileType gitcommit setlocal complete+=kspell
 
 " Function that alternates the spelling language
 function AlternateSpelllang()
