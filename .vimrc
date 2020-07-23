@@ -23,6 +23,8 @@ call plug#begin()
 Plug 'jamessan/vim-gnupg'
 " Better C/C++ syntax highlighting
 Plug 'bfrg/vim-cpp-modern'
+" Support for Python PEP8 (text width)
+Plug('jimf/vim-pep8-text-width')
 " YouCompleteMe
 Plug 'ycm-core/YouCompleteMe', { 'do': function('BuildYCM') }
 " ASyncRun. Run commands asynchronously and get results in QuickFix list.
@@ -58,7 +60,7 @@ set ttimeoutlen=10
 " Settings for various file types
 autocmd FileType markdown setlocal textwidth=72
 autocmd FileType c,cpp setlocal textwidth=120
-autocmd FileType markdown,gitcommit,c,cpp,vim setlocal spell
+autocmd FileType markdown,gitcommit,c,cpp,vim,python setlocal spell
 autocmd FileType markdown,gitcommit setlocal complete+=kspell
 autocmd FileType markdown setlocal autoindent
 
