@@ -57,9 +57,13 @@ set ttimeoutlen=10
 
 " Settings for various file types
 autocmd FileType markdown setlocal textwidth=72
+autocmd FileType c,cpp setlocal textwidth=120
 autocmd FileType markdown,gitcommit,c,cpp,vim setlocal spell
 autocmd FileType markdown,gitcommit setlocal complete+=kspell
 autocmd FileType markdown setlocal autoindent
+
+" Automatic write before make (among others)
+set autowrite
 
 " Function that alternates the spelling language
 function AlternateSpelllang()
@@ -89,6 +93,6 @@ cnoremap <expr> <leader>dt DateTimeStringNoSpace()
 " Insert markdown and GPG extension, open the file, and accept the default list of recipients
 cnoremap <leader>nmd .md.gpg<CR>:q<CR>
 " YouComplete me bindings
-nmap <leader>d <plug>(YCMHover)
+nmap <leader>c <plug>(YCMHover)
 nnoremap <leader>g :YcmComplete GoTo<CR>
 nnoremap <leader>r :YcmComplete GoToReferences<CR>
