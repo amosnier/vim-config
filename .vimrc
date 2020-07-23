@@ -21,6 +21,8 @@ endfunction
 call plug#begin()
 " GPG support
 Plug 'jamessan/vim-gnupg'
+" Better C/C++ syntax highlighting
+Plug 'bfrg/vim-cpp-modern'
 " YouCompleteMe
 Plug 'ycm-core/YouCompleteMe', { 'do': function('BuildYCM') }
 " ASyncRun. Run commands asynchronously and get results in QuickFix list.
