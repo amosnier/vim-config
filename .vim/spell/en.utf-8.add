@@ -22,3 +22,5 @@ IRQHandler
 isr
 MCUs
 ISRs
+F7
+autopep8
