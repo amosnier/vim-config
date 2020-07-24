@@ -36,7 +36,7 @@ call plug#end()
 " Default list of recipients for GPG
 let g:GPGDefaultRecipients=[ 'alain@wanamoon.net' ]
 
-" Statusline always on
+" Status line always on
 set laststatus=2
 
 " Make airline compatible with C/C++ quite usual mixed indentation (also
@@ -49,7 +49,8 @@ set laststatus=2
 let g:airline#extensions#whitespace#mixed_indent_algo = 2
 
 " Disable key mapping timeout, since I will use <leader> or otherwise unmapped
-" keys. But ensure that ttiemout is not, since it is necessary for Esc.
+" keys. But ensure that ttimeout is not, since it is necessary for the escape
+" key.
 set notimeout
 set ttimeout
 
@@ -94,7 +95,7 @@ autocmd FileType markdown nnoremap <buffer> <F2> :call AlternateSpelllang()<CR>
 cnoremap <expr> <leader>dt DateTimeStringNoSpace()
 " Insert markdown and GPG extension, open the file, and accept the default list of recipients
 cnoremap <leader>nmd .md.gpg<CR>:q<CR>
-" YouComplete me bindings
+" YouCompleteMe bindings
 nmap <leader>c <plug>(YCMHover)
 nnoremap <leader>g :YcmComplete GoTo<CR>
 nnoremap <leader>r :YcmComplete GoToReferences<CR>
