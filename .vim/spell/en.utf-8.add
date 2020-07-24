@@ -15,3 +15,10 @@ cpp
 SVD
 svd
 mcu
+ISR
+pragma
+STM32F746xx
+IRQHandler
+isr
+MCUs
+ISRs
