@@ -4,6 +4,19 @@ colors zenburn
 " Enable mouse support
 set mouse=a
 
+" Disable key mapping timeout, since I will use <leader> or otherwise unmapped
+" keys. But ensure that ttimeout is not, since it is necessary for the escape
+" key.
+set notimeout
+set ttimeout
+
+" Decrease time-out to remove pause when leaving insert mode (see
+" https://github.com/vim-airline/vim-airline/wiki/FAQ).
+set ttimeoutlen=10
+
+" Better tab completion. Like Bash, but even a little better.
+set wildmode=longest,list,full
+
 " YCM installation function
 function! BuildYCM(info)
 	" info is a dictionary with 3 fields
@@ -47,16 +60,6 @@ set laststatus=2
 " 	 */
 "
 let g:airline#extensions#whitespace#mixed_indent_algo = 2
-
-" Disable key mapping timeout, since I will use <leader> or otherwise unmapped
-" keys. But ensure that ttimeout is not, since it is necessary for the escape
-" key.
-set notimeout
-set ttimeout
-
-" Decrease time-out to remove pause when leaving insert mode (see
-" https://github.com/vim-airline/vim-airline/wiki/FAQ).
-set ttimeoutlen=10
 
 " Settings for various file types
 autocmd FileType markdown setlocal textwidth=72
