@@ -36,6 +36,10 @@ function! BuildYCM(info)
 	endif
 endfunction
 
+" Debug YCM
+
+let g:ycm_log_level='debug'
+
 " =======
 " Plugins
 " =======
