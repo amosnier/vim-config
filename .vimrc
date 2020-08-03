@@ -38,7 +38,7 @@ endfunction
 
 " Debug YCM
 
-let g:ycm_log_level='debug'
+""let g:ycm_log_level='debug'
 
 " =======
 " Plugins
