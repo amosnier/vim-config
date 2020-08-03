@@ -151,9 +151,9 @@ endfunction
 
 " Make some keys that are often used in normal mode more easily accessible
 
-nnoremap å \
-nnoremap ö [
-nnoremap ä ]
+map å \
+map ö [
+map ä ]
 
 " Alternate spellcheck language
 
