@@ -145,9 +145,11 @@ endfunction
 " Keyboard shortcuts
 " ==================
 
-" Change map leader
+" Make some keys that are often used in normal mode more easily accessible
 
-:let mapleader = 'ö'
+nnoremap å \
+nnoremap ö [
+nnoremap ä ]
 
 " Alternate spellcheck language
 
