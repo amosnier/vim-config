@@ -173,3 +173,7 @@ nmap <leader>c <plug>(YCMHover)
 nnoremap <leader>g :YcmCompleter GoTo<CR>
 nnoremap <leader>r :YcmCompleter GoToReferences<CR>
 nnoremap <leader>s :<C-u>execute 'YcmCompleter GoToSymbol '.input('Symbol: ')<CR>
+
+" Make key binding
+
+nnoremap <F7> :make<CR>
