@@ -104,7 +104,7 @@ augroup filetypes
 
 	autocmd!
 	autocmd FileType markdown setlocal textwidth=72
-	autocmd FileType c,cpp setlocal textwidth=120
+	autocmd FileType c,cpp,sh setlocal textwidth=120
 	autocmd FileType markdown,gitcommit,c,cpp,vim,python setlocal spell
 	autocmd FileType markdown,gitcommit setlocal complete+=kspell
 	autocmd FileType markdown setlocal autoindent
