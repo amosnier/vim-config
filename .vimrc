@@ -75,6 +75,12 @@ Plug 'skywind3000/asyncrun.vim'
 
 Plug 'vhdirk/vim-cmake'
 
+" FZF support. Let Vim Plug do the whole FZF work, including for the FZF that
+" we use outside of Vim.
+
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
 call plug#end()
 
 
