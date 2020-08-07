@@ -152,6 +152,7 @@ function! DateTimeStringNoSpace()
 	return strftime("%Y-%m-%d_%H%M")
 endfunction
 
+
 " ==================
 " Keyboard shortcuts
 " ==================
@@ -161,6 +162,8 @@ endfunction
 map å \
 map ö [
 map ä ]
+map <C-h> <C-[>
+map <C-l> <C-]>
 
 " Alternate spellcheck language
 
@@ -184,3 +187,12 @@ nnoremap <leader>s :<C-u>execute 'YcmCompleter GoToSymbol '.input('Symbol: ')<CR
 " Make key binding
 
 nnoremap <F7> :make<CR>
+
+" Quickfix list shortcuts
+
+nnoremap <leader>n :cnext<CR>
+nnoremap <leader>p :cprevious<CR>
+
+" FZF shortcuts
+
+nnoremap <leader>t :GFiles<CR>
