@@ -72,7 +72,15 @@ set laststatus=2
 " 	 * Comment here
 " 	 */
 "
+" Note: handling mixed-indent-file is very difficult when using tabs for
+" indentation and spaces for alignment (at indentation level zero, there will
+" be leading spaces without any tabs before them). This is better taken care
+" of by a global clang-format anyway.
 let g:airline#extensions#whitespace#mixed_indent_algo = 2
+let g:airline#extensions#whitespace#skip_indent_check_ft = {
+	\ 'cpp': ['mixed-indent-file'],
+	\ 'c': ['mixed-indent-file']
+	\ }
 
 " Auto-commands for various file types
 augroup filetypes
@@ -145,9 +153,12 @@ nnoremap <leader>s :<C-u>execute 'YcmCompleter GoToSymbol '.input('Symbol: ')<CR
 " Make key binding
 nnoremap <F7> :make<CR>
 
-" Quickfix list shortcuts
+" Quickfix list bindings
 nnoremap <leader>n :cnext<CR>
 nnoremap <leader>p :cprevious<CR>
 
-" FZF shortcuts
+" FZF bindings
 nnoremap <leader>t :GFiles<CR>
+
+" clang-format bindings, as recommended by the Clang project
+noremap <C-K> :py3file /usr/share/vim/addons/syntax/clang-format.py<cr>
