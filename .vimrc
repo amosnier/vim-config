@@ -159,6 +159,7 @@ nnoremap <leader>p :cprevious<CR>
 
 " FZF bindings
 nnoremap <leader>t :GFiles<CR>
+nnoremap <leader>f :Lines<CR>
 
 " clang-format bindings, as recommended by the Clang project
 noremap <C-K> :py3file /usr/share/vim/addons/syntax/clang-format.py<cr>
