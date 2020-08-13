@@ -134,6 +134,8 @@ map ö [
 map ä ]
 map <C-h> <C-[>
 map <C-l> <C-]>
+map ¤ ^
+cmap ¤ ^
 
 " Alternate spellcheck language
 autocmd FileType markdown nnoremap <buffer> <F2> :call AlternateSpelllang()<CR>
