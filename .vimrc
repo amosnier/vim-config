@@ -11,6 +11,10 @@ set mouse=a
 set notimeout
 set ttimeout
 
+" Enable search highlighting and incremental search
+set hlsearch
+set incsearch
+
 " Decrease time-out to remove pause when leaving insert mode (see
 " https://github.com/vim-airline/vim-airline/wiki/FAQ).
 set ttimeoutlen=10
