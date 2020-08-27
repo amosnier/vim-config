@@ -1,6 +1,8 @@
 " Zenburn color scheme
-
 colors zenburn
+
+" Allow local .vimrc
+set exrc
 
 " Enable mouse support
 set mouse=a
