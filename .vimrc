@@ -39,6 +39,12 @@ endfunction
 ""let g:ycm_log_level='debug'
 let g:ycm_autoclose_preview_window_after_completion = 1
 
+" YCM clangd related values, as recommended by the LLVM project
+" Let clangd fully control code completion
+let g:ycm_clangd_uses_ycmd_caching = 0
+" Use installed clangd, not YCM-bundled clangd which doesn't get updates.
+let g:ycm_clangd_binary_path = exepath("clangd")
+
 " =======
 " Plugins
 " =======
