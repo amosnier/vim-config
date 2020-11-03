@@ -102,6 +102,7 @@ augroup filetypes
 	autocmd FileType html setlocal textwidth=106
 	autocmd FileType c,cpp,sh setlocal textwidth=120
 	autocmd FileType c,cpp set comments^=:///
+	autocmd FileType c,cpp noremap <C-K> :py3file /usr/share/vim/addons/syntax/clang-format.py<cr>
 	autocmd FileType markdown,gitcommit,c,cpp,vim,python setlocal spell
 	autocmd FileType markdown,gitcommit setlocal complete+=kspell
 	autocmd FileType markdown setlocal autoindent
@@ -176,6 +177,3 @@ nnoremap <leader>p :cprevious<CR>
 " FZF bindings
 nnoremap <leader>t :GFiles<CR>
 nnoremap <leader>f :BLines<CR>
-
-" clang-format bindings, as recommended by the Clang project
-noremap <C-K> :py3file /usr/share/vim/addons/syntax/clang-format.py<cr>
