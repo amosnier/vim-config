@@ -36,7 +36,7 @@ function! BuildYCM(info)
 endfunction
 
 " YCM variables
-""let g:ycm_log_level='debug'
+let g:ycm_log_level='debug'
 let g:ycm_autoclose_preview_window_after_completion = 1
 
 " YCM clangd related values, as recommended by the LLVM project
@@ -99,7 +99,9 @@ augroup filetypes
 	" Clear group to provide support for multiple sourcing
 	autocmd!
 	autocmd FileType markdown setlocal textwidth=72
+	autocmd FileType html setlocal textwidth=106
 	autocmd FileType c,cpp,sh setlocal textwidth=120
+	autocmd FileType c,cpp set comments^=:///
 	autocmd FileType markdown,gitcommit,c,cpp,vim,python setlocal spell
 	autocmd FileType markdown,gitcommit setlocal complete+=kspell
 	autocmd FileType markdown setlocal autoindent
