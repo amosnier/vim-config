@@ -153,27 +153,28 @@ map ¤ ^
 cmap ¤ ^
 
 " Alternate spellcheck language
-autocmd FileType markdown nnoremap <buffer> <F2> :call AlternateSpelllang()<CR>
+autocmd FileType markdown nnoremap <buffer> <F2> :call AlternateSpelllang()<cr>
 
 " Insert date and time with no space
 cnoremap <expr> <leader>dt DateTimeStringNoSpace()
 
 " Insert markdown and GPG extension, open the file, and accept the default list of recipients
-cnoremap <leader>nmd .md.gpg<CR>:q<CR>
+cnoremap <leader>nmd .md.gpg<cr>:q<cr>
 
 " YouCompleteMe bindings
 nmap <leader>c <plug>(YCMHover)
-nnoremap <leader>g :YcmCompleter GoTo<CR>
-nnoremap <leader>r :YcmCompleter GoToReferences<CR>
-nnoremap <leader>s :<C-u>execute 'YcmCompleter GoToSymbol '.input('Symbol: ')<CR>
+nnoremap <leader>g :YcmCompleter GoTo<cr>
+nnoremap <leader>r :YcmCompleter GoToReferences<cr>
+nnoremap <leader>s :<C-u>execute 'YcmCompleter GoToSymbol '.input('Symbol: ')<cr>
 
 " Make key binding
-nnoremap <F7> :make<CR>
+nnoremap <F7> :make<cr>
+nnoremap <F8> :CMake<cr>
 
 " Quickfix list bindings
-nnoremap <leader>n :cnext<CR>
-nnoremap <leader>p :cprevious<CR>
+nnoremap <leader>n :cnext<cr>
+nnoremap <leader>p :cprevious<cr>
 
 " FZF bindings
-nnoremap <leader>t :GFiles<CR>
-nnoremap <leader>f :BLines<CR>
+nnoremap <leader>t :GFiles<cr>
+nnoremap <leader>f :BLines<cr>
