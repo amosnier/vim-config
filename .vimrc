@@ -39,6 +39,11 @@ endfunction
 let g:ycm_log_level='debug'
 let g:ycm_autoclose_preview_window_after_completion = 1
 
+" White list my default ARM cross-compiling compiler for clangd
+let g:ycm_clangd_args = [
+        \ '--query-driver=' . $HOME . '/custom/bin/gcc-arm-none-eabi*/bin/arm-none-eabi-*',
+        \ ]
+
 " YCM clangd related values, as recommended by the LLVM project
 " Let clangd fully control code completion
 let g:ycm_clangd_uses_ycmd_caching = 0
