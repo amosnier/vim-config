@@ -73,6 +73,8 @@ Plug 'vhdirk/vim-cmake'
 " we use outside of Vim.
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+" GLSL support
+Plug 'tikhomirov/vim-glsl'
 call plug#end()
 
 
