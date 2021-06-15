@@ -75,6 +75,8 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 " GLSL support
 Plug 'tikhomirov/vim-glsl'
+" Support for .gitignore
+Plug 'gisphm/vim-gitignore'
 call plug#end()
 
 
