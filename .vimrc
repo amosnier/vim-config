@@ -176,7 +176,8 @@ nnoremap <leader>g :YcmCompleter GoTo<cr>
 nnoremap <leader>r :YcmCompleter GoToReferences<cr>
 nnoremap <leader>s :<C-u>execute 'YcmCompleter GoToSymbol '.input('Symbol: ')<cr>
 
-" Make key binding
+" Make command and key bindings
+set makeprg=make\ -C\ build
 nnoremap <F7> :make<cr>
 nnoremap <F8> :CMake<cr>
 
