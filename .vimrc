@@ -132,8 +132,9 @@ let g:airline#extensions#whitespace#skip_indent_check_ft = {
 " Auto-commands that trigger when writing files
 augroup writing
 	autocmd!
-	" Autoformat before saving Python files (install autopep8!)
-	autocmd BufWritePre *.py normal! ggVGgq
+	" Autoformat before saving Python files (autopep8 necessary!), and
+	" return to previous cursor location
+	autocmd BufWritePre *.py normal! maggVGgq`a
 	autocmd BufWritePost *.py call flake8#Flake8()
 augroup END
 
