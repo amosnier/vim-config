@@ -72,7 +72,7 @@ augroup filetypes
 	" Auto-PEP8 formatting filter. Requires `pip install autopep8`.
 	" Doubly-aggressive (break lines and stuff). Ended with hyphen to
 	" indicate standard in as a source.
-	autocmd FileType python setlocal formatprg=autopep8\ -aa\ --max-line-length\ 120\ -
+	autocmd FileType python setlocal formatprg=autopep8\ -aa\ -
 	autocmd FileType python map <buffer> <F3> :call flake8#Flake8()<CR>
 augroup END
 
