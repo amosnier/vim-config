@@ -53,6 +53,29 @@ let g:ycm_clangd_binary_path = exepath("clangd")
 " vim-cmake variables
 let g:cmake_export_compile_commands=1
 
+" Auto-commands for various file types, before plugin before we do some plugin
+" remapping that they must be able to detect.
+augroup filetypes
+	" Clear group to provide support for multiple sourcing
+	autocmd!
+	autocmd FileType markdown setlocal textwidth=72
+	autocmd FileType html setlocal textwidth=106
+	autocmd FileType c,cpp,sh setlocal textwidth=120
+	autocmd FileType c,cpp set comments^=:///
+	autocmd FileType c,cpp noremap <C-K> :py3file /usr/share/vim/addons/syntax/clang-format.py<cr>
+	autocmd FileType markdown,gitcommit,c,cpp,vim,python setlocal spell
+	autocmd FileType markdown,gitcommit setlocal complete+=kspell
+	autocmd FileType markdown setlocal autoindent
+	" Alternate spellcheck language
+	autocmd FileType markdown nnoremap <buffer> <F2> :call AlternateSpelllang()<cr>
+
+	" Auto-PEP8 formatting filter. Requires `pip install autopep8`.
+	" Doubly-aggressive (break lines and stuff). Ended with hyphen to
+	" indicate standard in as a source.
+	autocmd FileType python setlocal formatprg=autopep8\ -aa\ --max-line-length\ 120\ -
+	autocmd FileType python map <buffer> <F3> :call flake8#Flake8()<CR>
+augroup END
+
 " =======
 " Plugins
 " =======
@@ -106,25 +129,6 @@ let g:airline#extensions#whitespace#skip_indent_check_ft = {
 	\ 'c': ['mixed-indent-file']
 	\ }
 
-" Auto-commands for various file types
-augroup filetypes
-	" Clear group to provide support for multiple sourcing
-	autocmd!
-	autocmd FileType markdown setlocal textwidth=72
-	autocmd FileType html setlocal textwidth=106
-	autocmd FileType c,cpp,sh setlocal textwidth=120
-	autocmd FileType c,cpp set comments^=:///
-	autocmd FileType c,cpp noremap <C-K> :py3file /usr/share/vim/addons/syntax/clang-format.py<cr>
-	autocmd FileType markdown,gitcommit,c,cpp,vim,python setlocal spell
-	autocmd FileType markdown,gitcommit setlocal complete+=kspell
-	autocmd FileType markdown setlocal autoindent
-
-	" Auto-PEP8 formatting filter. Requires `pip install autopep8`.
-	" Doubly-aggressive (break lines and stuff). Ended with hyphen to
-	" indicate standard in as a source.
-	autocmd FileType python setlocal formatprg=autopep8\ -aa\ --max-line-length\ 120\ -
-augroup END
-
 " Auto-commands that trigger when writing files
 augroup writing
 	autocmd!
@@ -163,9 +167,6 @@ map <C-h> <C-[>
 map <C-l> <C-]>
 map ¤ ^
 cmap ¤ ^
-
-" Alternate spellcheck language
-autocmd FileType markdown nnoremap <buffer> <F2> :call AlternateSpelllang()<cr>
 
 " Insert date and time with no space
 cnoremap <expr> <leader>dt DateTimeStringNoSpace()
