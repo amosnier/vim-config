@@ -53,6 +53,9 @@ let g:ycm_clangd_binary_path = exepath("clangd")
 " vim-cmake variables
 let g:cmake_export_compile_commands=1
 
+" Define alias for clang-format, since we now use it twice
+command! -range ClangFormat <line1>,<line2>py3file /usr/share/vim/addons/syntax/clang-format.py
+
 " Auto-commands for various file types, before plugin before we do some plugin
 " remapping that they must be able to detect.
 augroup filetypes
@@ -62,7 +65,7 @@ augroup filetypes
 	autocmd FileType html setlocal textwidth=106
 	autocmd FileType c,cpp,sh setlocal textwidth=120
 	autocmd FileType c,cpp set comments^=:///
-	autocmd FileType c,cpp noremap <C-K> :py3file /usr/share/vim/addons/syntax/clang-format.py<cr>
+	autocmd FileType c,cpp noremap <C-K> :ClangFormat<cr>
 	autocmd FileType markdown,gitcommit,c,cpp,vim,python setlocal spell
 	autocmd FileType markdown,gitcommit setlocal complete+=kspell
 	autocmd FileType markdown setlocal autoindent
@@ -135,6 +138,8 @@ augroup writing
 	" Autoformat before saving Python files (autopep8 necessary!), and
 	" return to previous cursor location
 	autocmd BufWritePre *.py normal! maggVGgq`a
+	" Same kind of auto-format as for Python for C/C++, but with clang-format
+	autocmd BufWritePre *.c,*.cpp,*.h,*.hpp :%ClangFormat
 	autocmd BufWritePost *.py call flake8#Flake8()
 augroup END
 
