@@ -50,9 +50,6 @@ let g:ycm_clangd_uses_ycmd_caching = 0
 " Use installed clangd, not YCM-bundled clangd which doesn't get updates.
 let g:ycm_clangd_binary_path = exepath("clangd")
 
-" vim-cmake variables
-let g:cmake_export_compile_commands=1
-
 " Define alias for clang-format, since we now use it twice
 command! -range ClangFormat <line1>,<line2>py3file /usr/share/vim/addons/syntax/clang-format.py
 
@@ -96,8 +93,6 @@ Plug 'nvie/vim-flake8'
 Plug 'ycm-core/YouCompleteMe', { 'do': function('BuildYCM') }
 " ASyncRun. Run commands asynchronously and get results in QuickFix list.
 Plug 'skywind3000/asyncrun.vim'
-" CMake support
-Plug 'vhdirk/vim-cmake'
 " FZF support. Let Vim Plug do the whole FZF work, including for the FZF that
 " we use outside of Vim.
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -191,7 +186,6 @@ nnoremap <leader>s :<C-u>execute 'YcmCompleter GoToSymbol '.input('Symbol: ')<cr
 " Make command and key bindings
 set makeprg=make\ -C\ build
 nnoremap <F7> :make<cr>
-nnoremap <F8> :CMake<cr>
 
 " Quickfix list bindings
 nnoremap <leader>n :cnext<cr>
