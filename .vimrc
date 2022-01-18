@@ -184,7 +184,6 @@ nnoremap <leader>r :YcmCompleter GoToReferences<cr>
 nnoremap <leader>s :<C-u>execute 'YcmCompleter GoToSymbol '.input('Symbol: ')<cr>
 
 " Make command and key bindings
-set makeprg=make\ -C\ build
 nnoremap <F7> :make<cr>
 
 " Quickfix list bindings
