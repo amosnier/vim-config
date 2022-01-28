@@ -53,22 +53,9 @@ let g:ycm_clangd_binary_path = exepath("clangd")
 " Define alias for clang-format, since we now use it twice
 command! -range ClangFormat <line1>,<line2>py3file /usr/share/vim/addons/syntax/clang-format.py
 
-" Auto-commands for various file types, before plugin before we do some plugin
-" remapping that they must be able to detect.
-augroup filetypes
-	" Clear group to provide support for multiple sourcing
-	autocmd!
-	autocmd FileType markdown setlocal textwidth=72
-	autocmd FileType html setlocal textwidth=106
-	autocmd FileType c,cpp,sh setlocal textwidth=120
-	autocmd FileType c,cpp set comments^=:///
-	autocmd FileType c,cpp noremap <C-K> :ClangFormat<cr>
-	autocmd FileType markdown,gitcommit,c,cpp,vim,python setlocal spell
-	autocmd FileType markdown,gitcommit setlocal complete+=kspell
-	autocmd FileType markdown setlocal autoindent
-	" Alternate spellcheck language
-	autocmd FileType markdown nnoremap <buffer> <F2> :call AlternateSpelllang()<cr>
-
+" Auto-commands for various file types, before we do some plugin remapping
+" that they must be able to detect.
+augroup filetypes_before_plugins
 	" Auto-PEP8 formatting filter. Requires `pip install autopep8`.
 	" Doubly-aggressive (break lines and stuff). Ended with hyphen to
 	" indicate standard in as a source.
@@ -126,6 +113,21 @@ let g:airline#extensions#whitespace#skip_indent_check_ft = {
 	\ 'cpp': ['mixed-indent-file'],
 	\ 'c': ['mixed-indent-file']
 	\ }
+
+augroup filetypes
+	" Clear group to provide support for multiple sourcing
+	autocmd!
+	autocmd FileType markdown setlocal textwidth=72
+	autocmd FileType html setlocal textwidth=106
+	autocmd FileType c,cpp,sh setlocal textwidth=120
+	autocmd FileType c,cpp set comments^=:///
+	autocmd FileType c,cpp noremap <C-K> :ClangFormat<cr>
+	autocmd FileType markdown,gitcommit,c,cpp,vim,python setlocal spell
+	autocmd FileType markdown,gitcommit setlocal complete+=kspell
+	autocmd FileType markdown setlocal autoindent
+	" Alternate spellcheck language
+	autocmd FileType markdown nnoremap <buffer> <F2> :call AlternateSpelllang()<cr>
+augroup END
 
 " Auto-commands that trigger when writing files
 augroup writing
