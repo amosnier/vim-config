@@ -88,6 +88,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'tikhomirov/vim-glsl'
 " Support for .gitignore
 Plug 'gisphm/vim-gitignore'
+" Support for Jupyter notebooks
+Plug 'goerz/jupytext.vim'
 call plug#end()
 
 
