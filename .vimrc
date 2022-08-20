@@ -172,8 +172,6 @@ endfunction
 map å \
 map ö [
 map ä ]
-map <C-h> <C-[>
-map <C-l> <C-]>
 map ¤ ^
 cmap ¤ ^
 
