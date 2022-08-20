@@ -190,10 +190,6 @@ nnoremap <leader>s :<C-u>execute 'YcmCompleter GoToSymbol '.input('Symbol: ')<cr
 " Make command and key bindings
 nnoremap <F7> :make<cr>
 
-" Quickfix list bindings
-nnoremap <leader>n :cnext<cr>
-nnoremap <leader>p :cprevious<cr>
-
 " FZF bindings
 nnoremap <leader>t :GFiles<cr>
 nnoremap <leader>f :BLines<cr>
