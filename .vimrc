@@ -90,8 +90,8 @@ Plug 'tikhomirov/vim-glsl'
 Plug 'gisphm/vim-gitignore'
 " Support for Jupyter notebooks
 Plug 'goerz/jupytext.vim'
-" Support for Julia
-Plug 'JuliaEditorSupport/julia-vim'
+" Pope's unimpaired
+Plug 'tpope/vim-unimpaired'
 call plug#end()
 
 
