@@ -24,6 +24,9 @@ set ttimeoutlen=10
 " Better tab completion. Like Bash, but even a little better.
 set wildmode=longest,list,full
 
+" Expand current file directory, courtesy Practical Vim
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+
 " YCM installation function
 function! BuildYCM(info)
 	" info is a dictionary with 3 fields
