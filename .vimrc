@@ -178,6 +178,7 @@ map ä ]
 map Ö <c-[>
 map Ä <c-]>
 map ¤ ^
+map g¤ g^
 cmap ¤ ^
 
 " Insert date and time with no space
