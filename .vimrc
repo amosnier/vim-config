@@ -182,6 +182,14 @@ map § `
 map g¤ g^
 cmap ¤ ^
 
+" Mappings for jumping around
+map § `
+map '¤ `^
+map 'ö `[
+map 'ä `]
+map '< `<
+map '> `>
+
 " Insert date and time with no space
 cnoremap <expr> <leader>dt DateTimeStringNoSpace()
 
