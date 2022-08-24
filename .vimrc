@@ -70,6 +70,9 @@ augroup END
 " Plugins
 " =======
 
+" Load some plugins distributed with Vim
+runtime macros/matchit.vim
+
 call plug#begin()
 " GPG support
 Plug 'jamessan/vim-gnupg'
@@ -93,8 +96,10 @@ Plug 'tikhomirov/vim-glsl'
 Plug 'gisphm/vim-gitignore'
 " Support for Jupyter notebooks
 Plug 'goerz/jupytext.vim'
-" Pope's unimpaired
+" Pope's plugins
+Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-surround'
 call plug#end()
 
 
@@ -184,6 +189,8 @@ cmap ¤ ^
 
 " Mappings for jumping around
 map § `
+map '' ``
+map '. `.
 map '¤ `^
 map 'ö `[
 map 'ä `]
