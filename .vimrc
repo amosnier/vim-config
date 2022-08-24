@@ -178,6 +178,7 @@ map ä ]
 map Ö <c-[>
 map Ä <c-]>
 map ¤ ^
+map § `
 map g¤ g^
 cmap ¤ ^
 
