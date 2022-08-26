@@ -100,6 +100,8 @@ Plug 'goerz/jupytext.vim'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-surround'
+" Vlime for Lisp
+Plug 'vlime/vlime', {'rtp': 'vim/'}
 call plug#end()
 
 
