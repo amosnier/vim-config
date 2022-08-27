@@ -100,8 +100,8 @@ Plug 'goerz/jupytext.vim'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-surround'
-" Slimv for Lisp
-Plug 'kovisoft/slimv'
+" Vlime for Lisp
+Plug 'vlime/vlime', {'rtp': 'vim/'}
 call plug#end()
 
 
