@@ -64,6 +64,10 @@ augroup filetypes_before_plugins
 	" indicate standard in as a source.
 	autocmd FileType python setlocal formatprg=autopep8\ -aa\ -
 	autocmd FileType python map <buffer> <F3> :call flake8#Flake8()<CR>
+	" Racket scmindent.rkt for Scheme family indenting. Requires in
+	" scmindent on the path (typically under /usr/local/bin, which
+	" requires Racket as an interpreter.
+	autocmd FileType lisp,scheme,racket setlocal equalprg=scmindent.rkt
 augroup END
 
 " =======
@@ -100,6 +104,8 @@ Plug 'goerz/jupytext.vim'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-surround'
+" Racket support
+Plug 'wlangstroth/vim-racket'
 call plug#end()
 
 
@@ -139,6 +145,8 @@ augroup filetypes
 	autocmd FileType markdown setlocal autoindent
 	" Alternate spellcheck language
 	autocmd FileType markdown nnoremap <buffer> <F2> :call AlternateSpelllang()<cr>
+	" No tabs in Lisp...
+	autocmd FileType lisp,scheme,racket setlocal expandtab
 augroup END
 
 " Auto-commands that trigger when writing files
