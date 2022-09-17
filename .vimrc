@@ -230,8 +230,11 @@ nnoremap <leader>g :YcmCompleter GoTo<cr>
 nnoremap <leader>r :YcmCompleter GoToReferences<cr>
 nnoremap <leader>s :<C-u>execute 'YcmCompleter GoToSymbol '.input('Symbol: ')<cr>
 
+" Bind f5 to pastetoggle, helps with pasting from the clipboard
+set pastetoggle=<f5>
+
 " Make command and key bindings
-nnoremap <F7> :make<cr>
+nnoremap <f7> :make<cr>
 
 " FZF bindings
 nnoremap <leader>t :GFiles<cr>
