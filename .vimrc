@@ -107,6 +107,8 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 " Racket support
 Plug 'wlangstroth/vim-racket'
+" Vim visual search (suggested in Practical Vim)
+Plug 'bronson/vim-visual-star-search'
 call plug#end()
 
 
@@ -180,6 +182,15 @@ function! DateTimeStringNoSpace()
 	return strftime("%Y-%m-%d_%H%M")
 endfunction
 
+" Run ripgrep through fzf with a fixed string
+function! FzfRgLiteralString(string, bang = 0)
+	call fzf#vim#grep(
+		\ 'rg --column --line-number --no-heading --color=always --fixed-strings -- ' . shellescape(a:string),
+		\ 1, fzf#vim#with_preview(), a:bang)
+endfunction
+
+" Command for the previous function
+command! -bang -nargs=* Rglit call FzfRgLiteralString(<q-args>, <bang>0)
 
 " ==================
 " Keyboard shortcuts
@@ -209,7 +220,8 @@ map '> `>
 " Insert date and time with no space
 cnoremap <expr> <leader>dt DateTimeStringNoSpace()
 
-" Insert markdown and GPG extension, open the file, and accept the default list of recipients
+" Insert markdown and GPG extension, open the file, and accept the default
+" list of recipients
 cnoremap <leader>nmd .md.gpg<cr>:q<cr>
 
 " YouCompleteMe bindings
@@ -224,3 +236,11 @@ nnoremap <F7> :make<cr>
 " FZF bindings
 nnoremap <leader>t :GFiles<cr>
 nnoremap <leader>f :BLines<cr>
+
+" Mappings partly related to visual star search, customized for ripgrep
+" through FZF. Run the equivalent of Rg, with an automatically fetched literal
+" string. In normal mode, the string is the current search pattern. In visual
+" mode, we take the help of visual star search to get the current selection as
+" the literal string.
+nnoremap <leader>* :call FzfRgLiteralString(expand("<cword>"))<cr>
+vnoremap <leader>* :<C-u>call VisualStarSearchSet('/', 'raw')<cr>:call FzfRgLiteralString(@/)<cr>
