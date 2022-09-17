@@ -104,6 +104,7 @@ Plug 'goerz/jupytext.vim'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
 " Racket support
 Plug 'wlangstroth/vim-racket'
 call plug#end()
