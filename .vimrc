@@ -105,6 +105,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-abolish'
 " Racket support
 Plug 'wlangstroth/vim-racket'
 " Vim visual search (suggested in Practical Vim)
