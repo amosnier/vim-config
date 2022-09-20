@@ -101,6 +101,7 @@ Plug 'gisphm/vim-gitignore'
 " Support for Jupyter notebooks
 Plug 'goerz/jupytext.vim'
 " Pope's plugins
+Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-surround'
