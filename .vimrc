@@ -159,7 +159,7 @@ augroup writing
 	autocmd!
 	" Autoformat before saving Python files (autopep8 necessary!), and
 	" return to previous cursor location
-	autocmd BufWritePre *.py normal! maggVGgq`a
+	autocmd BufWritePre *.py normal! maggVGgq`azz
 	" Same kind of auto-format as for Python for C/C++, but with clang-format
 	autocmd BufWritePre *.c,*.cpp,*.h,*.hpp :%ClangFormat
 	autocmd BufWritePost *.py call flake8#Flake8()
