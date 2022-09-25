@@ -111,6 +111,8 @@ Plug 'tpope/vim-abolish'
 Plug 'wlangstroth/vim-racket'
 " Vim visual search (suggested in Practical Vim)
 Plug 'bronson/vim-visual-star-search'
+" So-called Yet another vim library, for KeepView
+Plug 'vim-scripts/anwolib'
 call plug#end()
 
 
@@ -157,9 +159,9 @@ augroup END
 " Auto-commands that trigger when writing files
 augroup writing
 	autocmd!
-	" Autoformat before saving Python files (autopep8 necessary!), and
-	" return to previous cursor location
-	autocmd BufWritePre *.py normal! maggVGgq`azz
+	" Autoformat before saving Python files (autopep8 necessary!), while
+	" keeping "the view"
+	autocmd BufWritePre *.py :KeepView %normal! gq
 	" Same kind of auto-format as for Python for C/C++, but with clang-format
 	autocmd BufWritePre *.c,*.cpp,*.h,*.hpp :%ClangFormat
 	autocmd BufWritePost *.py call flake8#Flake8()
