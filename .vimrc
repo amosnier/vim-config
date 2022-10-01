@@ -82,8 +82,8 @@ call plug#begin()
 Plug 'jamessan/vim-gnupg'
 " Better C/C++ syntax highlighting
 Plug 'bfrg/vim-cpp-modern'
-" Enforce PEP8 auto-indentation
-Plug 'Vimjas/vim-python-pep8-indent'
+" Support for autopep8
+Plug 'tell-k/vim-autopep8'
 " Support for Python Linting (F7 by default)
 Plug 'nvie/vim-flake8'
 " YouCompleteMe
@@ -111,8 +111,6 @@ Plug 'tpope/vim-abolish'
 Plug 'wlangstroth/vim-racket'
 " Vim visual search (suggested in Practical Vim)
 Plug 'bronson/vim-visual-star-search'
-" So-called Yet another vim library, for KeepView
-Plug 'vim-scripts/anwolib'
 call plug#end()
 
 
@@ -139,6 +137,11 @@ let g:airline#extensions#whitespace#skip_indent_check_ft = {
 	\ 'c': ['mixed-indent-file']
 	\ }
 
+" Autopep8 settings
+let g:autopep8_disable_show_diff=1
+let g:autopep8_aggressive=2
+let g:autopep8_on_save = 1
+
 augroup filetypes
 	" Clear group to provide support for multiple sourcing
 	autocmd!
@@ -159,9 +162,6 @@ augroup END
 " Auto-commands that trigger when writing files
 augroup writing
 	autocmd!
-	" Autoformat before saving Python files (autopep8 necessary!), while
-	" keeping "the view"
-	autocmd BufWritePre *.py :KeepView %normal! gq
 	" Same kind of auto-format as for Python for C/C++, but with clang-format
 	autocmd BufWritePre *.c,*.cpp,*.h,*.hpp :%ClangFormat
 	autocmd BufWritePost *.py call flake8#Flake8()
