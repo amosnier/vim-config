@@ -133,6 +133,7 @@ set laststatus=2
 " of by a global clang-format anyway.
 let g:airline#extensions#whitespace#mixed_indent_algo = 2
 let g:airline#extensions#whitespace#skip_indent_check_ft = {
+	\ 'glsl': ['mixed-indent-file'],
 	\ 'cpp': ['mixed-indent-file'],
 	\ 'c': ['mixed-indent-file']
 	\ }
@@ -147,10 +148,10 @@ augroup filetypes
 	autocmd!
 	autocmd FileType markdown setlocal textwidth=72
 	autocmd FileType html setlocal textwidth=106
-	autocmd FileType c,cpp,sh setlocal textwidth=120
-	autocmd FileType c,cpp set comments^=:///
-	autocmd FileType c,cpp noremap <C-K> :ClangFormat<cr>
-	autocmd FileType markdown,gitcommit,c,cpp,vim,python setlocal spell
+	autocmd FileType c,cpp,glsl,sh setlocal textwidth=120
+	autocmd FileType c,cpp,glsl set comments^=:///
+	autocmd FileType c,cpp,glsl noremap <C-K> :ClangFormat<cr>
+	autocmd FileType markdown,gitcommit,c,cpp,glsl,vim,python setlocal spell
 	autocmd FileType markdown,gitcommit setlocal complete+=kspell
 	autocmd FileType markdown setlocal autoindent
 	" Alternate spellcheck language
@@ -163,7 +164,7 @@ augroup END
 augroup writing
 	autocmd!
 	" Same kind of auto-format as for Python for C/C++, but with clang-format
-	autocmd BufWritePre *.c,*.cpp,*.h,*.hpp :%ClangFormat
+	autocmd BufWritePre *.c,*.cpp,*.glsl,*.h,*.hpp :%ClangFormat
 	autocmd BufWritePost *.py call flake8#Flake8()
 augroup END
 
