@@ -126,6 +126,8 @@ Plug 'tpope/vim-abolish'
 Plug 'wlangstroth/vim-racket'
 " Vim visual search (suggested in Practical Vim)
 Plug 'bronson/vim-visual-star-search'
+" Haskell indenting
+Plug 'alx741/vim-hindent'
 call plug#end()
 
 
