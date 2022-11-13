@@ -41,6 +41,15 @@ endfunction
 " YCM variables
 let g:ycm_log_level='debug'
 let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_language_server = []
+let g:ycm_language_server += [
+	\   {
+	\     'name': 'haskell-language-server',
+	\     'cmdline': [ 'haskell-language-server-wrapper', '--lsp' ],
+	\     'filetypes': [ 'haskell', 'lhaskell' ],
+	\     'project_root_files': [ 'stack.yaml', 'cabal.project', 'package.yaml', 'hie.yaml' ],
+	\   },
+	\ ]
 
 " YCM-clangd arguments:
 "
