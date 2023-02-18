@@ -132,7 +132,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-abolish'
 " Racket support
-Plug 'wlangstroth/vim-racket'
+Plug 'benknoble/vim-racket'
 " Vim visual search (suggested in Practical Vim)
 Plug 'bronson/vim-visual-star-search'
 " Haskell indenting
