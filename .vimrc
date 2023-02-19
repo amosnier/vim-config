@@ -287,3 +287,10 @@ nnoremap <leader>f :BLines<cr>
 " the literal string.
 nnoremap <leader>* :call FzfRgLiteralString(expand("<cword>"))<cr>
 vnoremap <leader>* :<C-u>call VisualStarSearchSet('/', 'raw')<cr>:call FzfRgLiteralString(@/)<cr>
+
+" Automatically pair brackets
+inoremap { {}<Esc>ha
+inoremap ( ()<Esc>ha
+inoremap [ []<Esc>ha
+inoremap " ""<Esc>ha
+inoremap ` ``<Esc>ha
