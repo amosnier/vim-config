@@ -78,7 +78,7 @@ let g:ycm_clangd_uses_ycmd_caching = 0
 let g:ycm_clangd_binary_path = exepath("clangd")
 
 " Define alias for clang-format, since we now use it twice
-command! -range ClangFormat <line1>,<line2>py3file /usr/share/vim/addons/syntax/clang-format.py
+"command! -range ClangFormat <line1>,<line2>py3file /usr/share/vim/addons/syntax/clang-format.py
 
 " Auto-commands for various file types, before we do some plugin remapping
 " that they must be able to detect.
@@ -88,10 +88,13 @@ augroup filetypes_before_plugins
 	" indicate standard in as a source.
 	autocmd FileType python setlocal formatprg=autopep8\ -aa\ -
 	autocmd FileType python map <buffer> <F3> :call flake8#Flake8()<CR>
-	" Racket scmindent.rkt for Scheme family indenting. Requires in
+	" Use `raco fmt` for Lisp family indentation.
+	" (Was: Racket scmindent.rkt for Scheme family indenting. Requires in
 	" scmindent on the path (typically under /usr/local/bin, which
-	" requires Racket as an interpreter.
-	autocmd FileType lisp,scheme,racket setlocal equalprg=scmindent.rkt
+	" requires Racket as an interpreter.)
+	autocmd FileType lisp,scheme,racket setlocal equalprg=raco\ fmt
+	" Use `clang-format` for C family indentation
+	autocmd FileType c,cpp,glsl setlocal equalprg=clang-format
 augroup END
 
 " =======
@@ -132,7 +135,11 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-abolish'
 " Racket support
-Plug 'benknoble/vim-racket'
+" Note: unfortunately, `raco fmt` refuses to reformat comments.  It might
+" still be the best Lisp code formatter, but we use it in an ad-hoc manner,
+" through `equalprg`, rather than through vim-racket, which redefines
+" `formatprg`, effectively making comment reformatting much harder.
+"Plug 'benknoble/vim-racket'
 " Vim visual search (suggested in Practical Vim)
 Plug 'bronson/vim-visual-star-search'
 " Haskell indenting
@@ -176,8 +183,8 @@ augroup filetypes
 	autocmd FileType html setlocal textwidth=106
 	autocmd FileType c,cpp,glsl,sh setlocal textwidth=120
 	autocmd FileType c,cpp,glsl set comments^=:///
-	autocmd FileType c,cpp,glsl noremap <C-K> :ClangFormat<cr>
-	autocmd FileType markdown,gitcommit,c,cpp,glsl,vim,python setlocal spell
+	"autocmd FileType c,cpp,glsl noremap <C-K> :ClangFormat<cr>
+	autocmd FileType markdown,gitcommit,c,cpp,glsl,vim,python,lisp,scheme,racket setlocal spell
 	autocmd FileType markdown,gitcommit setlocal complete+=kspell
 	autocmd FileType markdown setlocal autoindent
 	" Alternate spellcheck language
@@ -190,8 +197,10 @@ augroup END
 augroup writing
 	autocmd!
 	" Same kind of auto-format as for Python for C/C++, but with clang-format
-	autocmd BufWritePre *.c,*.cpp,*.glsl,*.h,*.hpp :%ClangFormat
+	"autocmd BufWritePre *.c,*.cpp,*.glsl,*.h,*.hpp :%ClangFormat
 	autocmd BufWritePost *.py call flake8#Flake8()
+	" Autoindent Lisp and C family buffer upon saving
+	autocmd BufWritePre *.c,*.cpp,*.glsl,*.h,*.hpp,*.lisp,*.scm,*.rkt :normal magg=G`a
 augroup END
 
 " Automatic write before make (among others)
