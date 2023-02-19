@@ -91,7 +91,7 @@ augroup filetypes_before_plugins
 	" Racket scmindent.rkt for Scheme family indenting. Requires in
 	" scmindent on the path (typically under /usr/local/bin, which
 	" requires Racket as an interpreter.
-	autocmd FileType lisp,scheme,racket setlocal equalprg=smcindent.rkt
+	autocmd FileType lisp,scheme,racket setlocal equalprg=scmindent.rkt
 	" Use `clang-format` for C family indentation
 	autocmd FileType c,cpp,glsl setlocal equalprg=clang-format
 augroup END
