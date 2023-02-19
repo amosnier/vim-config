@@ -88,11 +88,10 @@ augroup filetypes_before_plugins
 	" indicate standard in as a source.
 	autocmd FileType python setlocal formatprg=autopep8\ -aa\ -
 	autocmd FileType python map <buffer> <F3> :call flake8#Flake8()<CR>
-	" Use `raco fmt` for Lisp family indentation.
-	" (Was: Racket scmindent.rkt for Scheme family indenting. Requires in
+	" Racket scmindent.rkt for Scheme family indenting. Requires in
 	" scmindent on the path (typically under /usr/local/bin, which
-	" requires Racket as an interpreter.)
-	autocmd FileType lisp,scheme,racket setlocal equalprg=raco\ fmt
+	" requires Racket as an interpreter.
+	autocmd FileType lisp,scheme,racket setlocal equalprg=smcindent.rkt
 	" Use `clang-format` for C family indentation
 	autocmd FileType c,cpp,glsl setlocal equalprg=clang-format
 augroup END
@@ -135,10 +134,11 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-abolish'
 " Racket support
-" Note: unfortunately, `raco fmt` refuses to reformat comments. It might
-" still be the best Lisp code formatter, but we use it in an ad-hoc manner,
-" through `equalprg`, rather than through vim-racket, which redefines
-" `formatprg`, effectively making comment reformatting much harder.
+" Note: unfortunately, `raco fmt` refuses to reformat comments, which makes it
+" only half useful. Worse, if it does not like its input, it dumps error
+" message to standard out instead of the filtered file. Not really a filter,
+" then. And vim-racket integrates it. For now we just use smcindent.rkt for
+" the Lisp family of languages.
 "Plug 'benknoble/vim-racket'
 " Vim visual search (suggested in Practical Vim)
 Plug 'bronson/vim-visual-star-search'
