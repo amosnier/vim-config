@@ -135,7 +135,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-abolish'
 " Racket support
-" Note: unfortunately, `raco fmt` refuses to reformat comments.  It might
+" Note: unfortunately, `raco fmt` refuses to reformat comments. It might
 " still be the best Lisp code formatter, but we use it in an ad-hoc manner,
 " through `equalprg`, rather than through vim-racket, which redefines
 " `formatprg`, effectively making comment reformatting much harder.
