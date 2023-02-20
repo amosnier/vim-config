@@ -200,7 +200,7 @@ augroup writing
 	"autocmd BufWritePre *.c,*.cpp,*.glsl,*.h,*.hpp :%ClangFormat
 	autocmd BufWritePost *.py call flake8#Flake8()
 	" Autoindent Lisp and C family buffer upon saving
-	autocmd BufWritePre *.c,*.cpp,*.glsl,*.h,*.hpp,*.lisp,*.scm,*.rkt :normal magg=G`a
+	autocmd BufWritePre *.c,*.cpp,*.glsl,*.h,*.hpp,*.lisp,*.scm,*.rkt :normal magg=G`azz
 augroup END
 
 " Automatic write before make (among others)
