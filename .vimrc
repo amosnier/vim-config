@@ -191,6 +191,8 @@ augroup filetypes
 	autocmd FileType markdown nnoremap <buffer> <F2> :call AlternateSpelllang()<cr>
 	" No tabs in Lisp...
 	autocmd FileType lisp,scheme,racket setlocal expandtab
+	" Pair parentheses in Lisp
+	autocmd FileType lisp,scheme,racket inoremap ( ()<Esc>ha
 augroup END
 
 " Auto-commands that trigger when writing files
@@ -287,10 +289,3 @@ nnoremap <leader>f :BLines<cr>
 " the literal string.
 nnoremap <leader>* :call FzfRgLiteralString(expand("<cword>"))<cr>
 vnoremap <leader>* :<C-u>call VisualStarSearchSet('/', 'raw')<cr>:call FzfRgLiteralString(@/)<cr>
-
-" Automatically pair brackets
-inoremap { {}<Esc>ha
-inoremap ( ()<Esc>ha
-inoremap [ []<Esc>ha
-inoremap " ""<Esc>ha
-inoremap ` ``<Esc>ha
