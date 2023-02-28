@@ -92,6 +92,8 @@ augroup filetypes_before_plugins
 	" scmindent on the path (typically under /usr/local/bin, which
 	" requires Racket as an interpreter.
 	autocmd FileType lisp,scheme,racket setlocal equalprg=scmindent.rkt
+	" Use `clang-format` for C family indentation
+	autocmd FileType c,cpp,glsl setlocal equalprg=clang-format
 augroup END
 
 " =======
@@ -176,14 +178,16 @@ augroup filetypes
 	autocmd FileType html setlocal textwidth=106
 	autocmd FileType c,cpp,glsl,sh setlocal textwidth=120
 	autocmd FileType c,cpp,glsl set comments^=:///
-	autocmd FileType c,cpp,glsl noremap <C-K> :ClangFormat<cr>
-	autocmd FileType markdown,gitcommit,c,cpp,glsl,vim,python setlocal spell
+	"autocmd FileType c,cpp,glsl noremap <C-K> :ClangFormat<cr>
+	autocmd FileType markdown,gitcommit,c,cpp,glsl,vim,python,lisp,scheme,racket setlocal spell
 	autocmd FileType markdown,gitcommit setlocal complete+=kspell
 	autocmd FileType markdown setlocal autoindent
 	" Alternate spellcheck language
 	autocmd FileType markdown nnoremap <buffer> <F2> :call AlternateSpelllang()<cr>
 	" No tabs in Lisp...
 	autocmd FileType lisp,scheme,racket setlocal expandtab
+	" Pair parentheses in Lisp
+	autocmd FileType lisp,scheme,racket inoremap ( ()<Esc>ha
 augroup END
 
 " Auto-commands that trigger when writing files
