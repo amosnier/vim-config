@@ -77,7 +77,7 @@ let g:ycm_clangd_uses_ycmd_caching = 0
 " Use installed clangd, not YCM-bundled clangd which doesn't get updates.
 let g:ycm_clangd_binary_path = exepath("clangd")
 
-" Define alias for clang-format, since we now use it twice
+" clang-format alias
 command! -range ClangFormat <line1>,<line2>py3file /usr/share/vim/addons/syntax/clang-format.py
 
 " Auto-commands for various file types, before we do some plugin remapping
@@ -134,7 +134,9 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-abolish'
 " Racket support
-Plug 'wlangstroth/vim-racket'
+" Among others, the formatter is not a real filter, which makes its automatic
+" use very dangerous (could replace the whole text with an error message...).
+"Plug 'benknoble/vim-racket'
 " Vim visual search (suggested in Practical Vim)
 Plug 'bronson/vim-visual-star-search'
 " Haskell indenting
@@ -178,7 +180,6 @@ augroup filetypes
 	autocmd FileType html setlocal textwidth=106
 	autocmd FileType c,cpp,glsl,sh setlocal textwidth=120
 	autocmd FileType c,cpp,glsl set comments^=:///
-	"autocmd FileType c,cpp,glsl noremap <C-K> :ClangFormat<cr>
 	autocmd FileType markdown,gitcommit,c,cpp,glsl,vim,python,lisp,scheme,racket setlocal spell
 	autocmd FileType markdown,gitcommit setlocal complete+=kspell
 	autocmd FileType markdown setlocal autoindent
