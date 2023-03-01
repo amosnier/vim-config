@@ -83,6 +83,8 @@ command! -range ClangFormat <line1>,<line2>py3file /usr/share/vim/addons/syntax/
 " Auto-commands for various file types, before we do some plugin remapping
 " that they must be able to detect.
 augroup filetypes_before_plugins
+	" Clear group to provide support for multiple sourcing
+	autocmd!
 	" Auto-PEP8 formatting filter. Requires `pip install autopep8`.
 	" Doubly-aggressive (break lines and stuff). Ended with hyphen to
 	" indicate standard in as a source.
