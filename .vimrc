@@ -90,10 +90,8 @@ augroup filetypes_before_plugins
 	" indicate standard in as a source.
 	autocmd FileType python setlocal formatprg=autopep8\ -aa\ -
 	autocmd FileType python map <buffer> <F3> :call flake8#Flake8()<CR>
-	" Racket scmindent.rkt for Scheme family indenting. Requires in
-	" scmindent on the path (typically under /usr/local/bin, which
-	" requires Racket as an interpreter.
-	autocmd FileType lisp,scheme,racket setlocal equalprg=scmindent.rkt
+	" Use `raco fmt` as indenter for Lisp family, with our workaround
+	autocmd FileType lisp,scheme,racket setlocal equalprg=raco-fmt-or-cat.sh\ 2>/dev/null
 	" Use `clang-format` for C family indentation
 	autocmd FileType c,cpp,glsl setlocal equalprg=clang-format
 augroup END
@@ -136,9 +134,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-abolish'
 " Racket support
-" Among others, the formatter is not a real filter, which makes its automatic
-" use very dangerous (could replace the whole text with an error message...).
-"Plug 'benknoble/vim-racket'
+Plug 'benknoble/vim-racket'
 " Vim visual search (suggested in Practical Vim)
 Plug 'bronson/vim-visual-star-search'
 " Haskell indenting
@@ -182,7 +178,7 @@ augroup filetypes
 	autocmd FileType html setlocal textwidth=106
 	autocmd FileType c,cpp,glsl,sh setlocal textwidth=120
 	autocmd FileType c,cpp,glsl set comments^=:///
-	autocmd FileType markdown,gitcommit,c,cpp,glsl,vim,python,lisp,scheme,racket setlocal spell
+	autocmd FileType markdown,gitcommit,c,cpp,glsl,vim,python,lisp,scheme,racket,sh setlocal spell
 	autocmd FileType markdown,gitcommit setlocal complete+=kspell
 	autocmd FileType markdown setlocal autoindent
 	" Alternate spellcheck language
@@ -191,6 +187,14 @@ augroup filetypes
 	autocmd FileType lisp,scheme,racket setlocal expandtab
 	" Pair parentheses in Lisp
 	autocmd FileType lisp,scheme,racket inoremap ( ()<Esc>ha
+	" vim-racket automatically uses `raco fmt` as the format program, but
+	" there are two drawbacks:
+	" - It does not output anything on standard out in case of error
+	"   (major issue when using it as an automatic filter).
+	" - It does not format comments (but the standard Vim formatter does
+	"   that well enough).
+	" See also comments about our `raco fmt` workaround elsewhere.
+	autocmd FileType lisp,scheme,racket setlocal formatprg=
 augroup END
 
 " Auto-commands that trigger when writing files
@@ -198,6 +202,9 @@ augroup writing
 	autocmd!
 	" Same kind of auto-format as for Python for C/C++, but with clang-format
 	autocmd BufWritePre *.c,*.cpp,*.glsl,*.h,*.hpp :%ClangFormat
+	" Automatically format Lisp family languages on save, with our
+	" workaround.
+	autocmd BufWritePre *.lisp,*.scm,*.rkt :%!raco-fmt-or-cat.sh 2>/dev/null
 	autocmd BufWritePost *.py call flake8#Flake8()
 augroup END
 
