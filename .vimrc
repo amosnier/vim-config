@@ -90,8 +90,8 @@ augroup filetypes_before_plugins
 	" indicate standard in as a source.
 	autocmd FileType python setlocal formatprg=autopep8\ -aa\ -
 	autocmd FileType python map <buffer> <F3> :call flake8#Flake8()<CR>
-	" Use `raco fmt` as indenter for Lisp family, with our workaround
-	autocmd FileType lisp,scheme,racket setlocal equalprg=raco-fmt-or-cat.sh\ 2>/dev/null
+	" Use `raco fmt` as indenter for Racket family, with our workaround
+	autocmd FileType racket setlocal equalprg=raco-fmt-or-cat.sh\ 2>/dev/null
 	" Use `clang-format` for C family indentation
 	autocmd FileType c,cpp,glsl setlocal equalprg=clang-format
 augroup END
@@ -187,6 +187,7 @@ augroup filetypes
 	autocmd FileType lisp,scheme,racket setlocal expandtab
 	" Pair parentheses in Lisp
 	autocmd FileType lisp,scheme,racket inoremap ( ()<Esc>ha
+	autocmd FileType scheme,racket inoremap [ []<Esc>ha
 	" vim-racket automatically uses `raco fmt` as the format program, but
 	" there are two drawbacks:
 	" - It does not output anything on standard out in case of error
@@ -194,7 +195,7 @@ augroup filetypes
 	" - It does not format comments (but the standard Vim formatter does
 	"   that well enough).
 	" See also comments about our `raco fmt` workaround elsewhere.
-	autocmd FileType lisp,scheme,racket setlocal formatprg=
+	autocmd FileType racket setlocal formatprg=
 augroup END
 
 " Auto-commands that trigger when writing files
@@ -204,7 +205,7 @@ augroup writing
 	autocmd BufWritePre *.c,*.cpp,*.glsl,*.h,*.hpp :%ClangFormat
 	" Automatically format Lisp family languages on save, with our
 	" workaround.
-	autocmd BufWritePre *.lisp,*.scm,*.rkt :%!raco-fmt-or-cat.sh 2>/dev/null
+	autocmd BufWritePre *.rkt :%!raco-fmt-or-cat.sh 2>/dev/null
 	autocmd BufWritePost *.py call flake8#Flake8()
 augroup END
 
