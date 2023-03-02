@@ -139,6 +139,8 @@ Plug 'benknoble/vim-racket'
 Plug 'bronson/vim-visual-star-search'
 " Haskell indenting
 Plug 'alx741/vim-hindent'
+" Yet another Vim library, for KeepView
+Plug 'vim-scripts/anwolib'
 call plug#end()
 
 
@@ -205,7 +207,7 @@ augroup writing
 	autocmd BufWritePre *.c,*.cpp,*.glsl,*.h,*.hpp :%ClangFormat
 	" Automatically format Lisp family languages on save, with our
 	" workaround.
-	autocmd BufWritePre *.rkt :%!raco-fmt-or-cat.sh 2>/dev/null
+	autocmd BufWritePre *.rkt :KeepView %!raco-fmt-or-cat.sh 2>/dev/null
 	autocmd BufWritePost *.py call flake8#Flake8()
 augroup END
 
