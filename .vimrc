@@ -7,6 +7,11 @@ set exrc
 " Enable mouse support
 set mouse=a
 
+" When joining lines, do not add an extra-space between sentences. For the
+" record, such an extra-space is sometimes used to improve readability with
+" monospaced fonts, but I am myself not used to that.
+set nojoinspaces
+
 " Disable key mapping timeout, since I will use <leader> or otherwise unmapped
 " keys. But ensure that ttimeout is not, since it is necessary for the escape
 " key.
