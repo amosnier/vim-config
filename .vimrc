@@ -1,3 +1,7 @@
+" Vim's example configuration includes useful backup file settings, among
+" others.
+source $VIMRUNTIME/vimrc_example.vim
+
 " Zenburn color scheme
 colors zenburn
 
