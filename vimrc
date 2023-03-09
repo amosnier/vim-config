@@ -130,6 +130,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-abolish'
 " Racket support
 Plug 'benknoble/vim-racket'
+" My own workaround for `racket fmt` issue
+Plug 'amosnier/raco-fmt-or-cat'
 " Vim visual search (suggested in Practical Vim)
 Plug 'bronson/vim-visual-star-search'
 " Haskell indenting
@@ -137,6 +139,9 @@ Plug 'alx741/vim-hindent'
 " Yet another Vim library, for KeepView
 Plug 'vim-scripts/anwolib'
 call plug#end()
+
+" Make raco-fmt-or-cat accessible
+let $PATH=expand("<sfile>:p:h") . '/plugged/raco-fmt-or-cat:' . $PATH
 
 
 " Default list of recipients for GPG
@@ -196,7 +201,7 @@ augroup filetypes
 	" - It does not format comments (but the standard Vim formatter does
 	"   that well enough).
 	autocmd FileType racket setlocal formatprg=
-	" Use `raco fmt` as indenter for Racket family, with our workaround
+	" Use `raco fmt` as indenter for Racket family, with my workaround
 	autocmd FileType racket setlocal equalprg=raco-fmt-or-cat.sh\ 2>/dev/null
 augroup END
 
