@@ -17,18 +17,18 @@ set mouse=a
 set nojoinspaces
 
 " Disable key mapping timeout, since I will use <leader> or otherwise unmapped
-" keys. But ensure that ttimeout is not, since it is necessary for the escape
+" keys. But ensure that ttimeout is enabled, since it is necessary for the escape
 " key.
 set notimeout
 set ttimeout
 
-" Enable search highlighting and incremental search
-set hlsearch
-set incsearch
-
 " Decrease time-out to remove pause when leaving insert mode (see
 " https://github.com/vim-airline/vim-airline/wiki/FAQ).
 set ttimeoutlen=10
+
+" Enable search highlighting and incremental search
+set hlsearch
+set incsearch
 
 " Better tab completion. Like Bash, but even a little better.
 set wildmode=longest,list,full
@@ -83,11 +83,12 @@ let g:ycm_clangd_args = [
 " YCM clangd related values, as recommended by the LLVM project
 " Let clangd fully control code completion
 let g:ycm_clangd_uses_ycmd_caching = 0
-" Use installed clangd, not YCM-bundled clangd which doesn't get updates.
+" Use installed clangd, not YCM-bundled clangd, in order control its updating
+" more easily.
 let g:ycm_clangd_binary_path = exepath("clangd")
 
 " Flake8 variables
-" We want our own mapping instead of the standard one.
+" I want my own mapping instead of the standard one.
 let g:no_flake8_maps = 1
 
 " clang-format alias
@@ -97,9 +98,6 @@ command! -range ClangFormat <line1>,<line2>py3file /usr/share/vim/addons/syntax/
 " Plugins
 " =======
 
-" Load some plugins distributed with Vim
-runtime macros/matchit.vim
-
 call plug#begin()
 " GPG support
 Plug 'jamessan/vim-gnupg'
@@ -107,7 +105,7 @@ Plug 'jamessan/vim-gnupg'
 Plug 'bfrg/vim-cpp-modern'
 " Support for autopep8
 Plug 'tell-k/vim-autopep8'
-" Support for Python Linting (F7 by default)
+" Support for Python Linting
 Plug 'nvie/vim-flake8'
 " YouCompleteMe
 Plug 'ycm-core/YouCompleteMe', { 'do': function('BuildYCM') }
@@ -143,9 +141,6 @@ call plug#end()
 
 " Default list of recipients for GPG
 let g:GPGDefaultRecipients=[ 'alain@wanamoon.net' ]
-
-" Status line always on
-set laststatus=2
 
 " Make airline compatible with C/C++ quite usual mixed indentation (also
 " applies to the following type of comments for instance):
