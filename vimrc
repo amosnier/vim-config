@@ -86,24 +86,12 @@ let g:ycm_clangd_uses_ycmd_caching = 0
 " Use installed clangd, not YCM-bundled clangd which doesn't get updates.
 let g:ycm_clangd_binary_path = exepath("clangd")
 
+" Flake8 variables
+" We want our own mapping instead of the standard one.
+let g:no_flake8_maps = 1
+
 " clang-format alias
 command! -range ClangFormat <line1>,<line2>py3file /usr/share/vim/addons/syntax/clang-format.py
-
-" Auto-commands for various file types, before we do some plugin remapping
-" that they must be able to detect.
-augroup filetypes_before_plugins
-	" Clear group to provide support for multiple sourcing
-	autocmd!
-	" Auto-PEP8 formatting filter. Requires `pip install autopep8`.
-	" Doubly-aggressive (break lines and stuff). Ended with hyphen to
-	" indicate standard in as a source.
-	autocmd FileType python setlocal formatprg=autopep8\ -aa\ -
-	autocmd FileType python map <buffer> <F3> :call flake8#Flake8()<CR>
-	" Use `raco fmt` as indenter for Racket family, with our workaround
-	autocmd FileType racket setlocal equalprg=raco-fmt-or-cat.sh\ 2>/dev/null
-	" Use `clang-format` for C family indentation
-	autocmd FileType c,cpp,glsl setlocal equalprg=clang-format
-augroup END
 
 " =======
 " Plugins
@@ -185,10 +173,17 @@ let g:autopep8_on_save = 1
 augroup filetypes
 	" Clear group to provide support for multiple sourcing
 	autocmd!
-	autocmd FileType markdown setlocal textwidth=72
+	" Auto-PEP8 formatting filter. Requires `pip install autopep8`.
+	" Doubly-aggressive (break lines and stuff). Ended with hyphen to
+	" indicate standard in as a source.
+	autocmd FileType python setlocal formatprg=autopep8\ -aa\ -
+	autocmd FileType python map <buffer> <F3> :call flake8#Flake8()<CR>
 	autocmd FileType html setlocal textwidth=106
+	" Use `clang-format` for C family indentation
+	autocmd FileType c,cpp,glsl setlocal equalprg=clang-format
 	autocmd FileType c,cpp,glsl,sh setlocal textwidth=120
 	autocmd FileType c,cpp,glsl set comments^=:///
+	autocmd FileType markdown setlocal textwidth=72
 	autocmd FileType markdown,gitcommit,c,cpp,glsl,vim,python,lisp,scheme,racket,sh setlocal spell
 	autocmd FileType markdown,gitcommit setlocal complete+=kspell
 	autocmd FileType markdown setlocal autoindent
@@ -205,8 +200,9 @@ augroup filetypes
 	"   (major issue when using it as an automatic filter).
 	" - It does not format comments (but the standard Vim formatter does
 	"   that well enough).
-	" See also comments about our `raco fmt` workaround elsewhere.
 	autocmd FileType racket setlocal formatprg=
+	" Use `raco fmt` as indenter for Racket family, with our workaround
+	autocmd FileType racket setlocal equalprg=raco-fmt-or-cat.sh\ 2>/dev/null
 augroup END
 
 " Auto-commands that trigger when writing files
