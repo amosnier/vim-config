@@ -71,8 +71,7 @@ set ttimeout
 " https://github.com/vim-airline/vim-airline/wiki/FAQ).
 set ttimeoutlen=10
 
-" Enable search highlighting and incremental search
-set hlsearch
+" Enable incremental search
 set incsearch
 
 " Better tab completion. Like Bash, but even a little better.
