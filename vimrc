@@ -233,8 +233,8 @@ augroup filetypes
 	autocmd FileType markdown setlocal autoindent
 	" Alternate spellcheck language
 	autocmd FileType markdown nnoremap <buffer> <F2> :call AlternateSpelllang()<cr>
-	" No tabs in Lisp...
-	autocmd FileType lisp,scheme,racket setlocal expandtab
+	" No tabs in Lisp..., or in cmake
+	autocmd FileType lisp,scheme,racket,cmake setlocal expandtab
 	" Pair parentheses in Lisp
 	autocmd FileType lisp,scheme,racket inoremap ( ()<Esc>ha
 	autocmd FileType scheme,racket inoremap [ []<Esc>ha
