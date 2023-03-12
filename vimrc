@@ -263,7 +263,12 @@ augroup END
 " Automatic write before make (among others)
 set autowrite
 
-" Function that alternates the spelling language
+" Function that alternates the spelling language.
+" Note: So far, I seem to have applied the strategy of letting Vim download
+" the original dictionaries for other languages than English to .vim/spell. At
+" least that's what my .gitignore seems to be witnessing. I suppose that
+" should work on every new machine and after every reinstallation of my Vim
+" config.
 function! AlternateSpelllang()
 	if &spelllang ==# 'en'
 		setlocal spelllang=fr
@@ -319,7 +324,7 @@ cnoremap <expr> <leader>dt DateTimeStringNoSpace()
 
 " Insert markdown and GPG extension, open the file, and accept the default
 " list of recipients
-cnoremap <leader>nmd .md.gpg<cr>:q<cr>
+cnoremap <leader>md .md.gpg<cr>:q<cr>
 
 " YouCompleteMe bindings
 nmap <leader>c <plug>(YCMHover)
