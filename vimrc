@@ -253,10 +253,10 @@ augroup END
 augroup writing
 	autocmd!
 	" Same kind of auto-format as for Python for C/C++, but with clang-format
-	autocmd BufWritePre *.c,*.cpp,*.glsl,*.h,*.hpp :%ClangFormat
+	autocmd BufWritePre *.c,*.cpp,*.glsl,*.h,*.hpp %ClangFormat
 	" Automatically format Lisp family languages on save, with our
 	" workaround.
-	autocmd BufWritePre *.rkt :KeepView %!raco-fmt-or-cat.sh 2>/dev/null
+	autocmd BufWritePre *.rkt KeepView %!raco-fmt-or-cat.sh 2>/dev/null
 	autocmd BufWritePost *.py call flake8#Flake8()
 augroup END
 
@@ -266,9 +266,9 @@ set autowrite
 " Function that alternates the spelling language.
 " Note: So far, I seem to have applied the strategy of letting Vim download
 " the original dictionaries for other languages than English to .vim/spell. At
-" least that's what my .gitignore seems to be witnessing. I suppose that
+" least that's what my .gitignore seems to be witnessing of. I suppose that
 " should work on every new machine and after every reinstallation of my Vim
-" config.
+" configuration.
 function! AlternateSpelllang()
 	if &spelllang ==# 'en'
 		setlocal spelllang=fr
