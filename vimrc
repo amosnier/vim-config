@@ -182,6 +182,8 @@ Plug 'bronson/vim-visual-star-search'
 Plug 'alx741/vim-hindent'
 " Yet another Vim library, for KeepView
 Plug 'vim-scripts/anwolib'
+" Doxygen support
+Plug 'vim-scripts/DoxygenToolkit.vim'
 call plug#end()
 
 " Make raco-fmt-or-cat accessible
