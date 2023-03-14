@@ -174,8 +174,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-abolish'
 " Racket support
 Plug 'benknoble/vim-racket'
-" My own workaround for `racket fmt` issue
-Plug 'amosnier/raco-fmt-or-cat'
 " Vim visual search (suggested in Practical Vim)
 Plug 'bronson/vim-visual-star-search'
 " Haskell indenting
@@ -185,10 +183,6 @@ Plug 'vim-scripts/anwolib'
 " Doxygen support
 Plug 'vim-scripts/DoxygenToolkit.vim'
 call plug#end()
-
-" Make raco-fmt-or-cat accessible
-let $PATH=expand("<sfile>:p:h") . '/plugged/raco-fmt-or-cat:' . $PATH
-
 
 " Default list of recipients for GPG
 let g:GPGDefaultRecipients=[ 'alain@wanamoon.net' ]
@@ -241,14 +235,10 @@ augroup filetypes
 	autocmd FileType lisp,scheme,racket inoremap ( ()<Esc>ha
 	autocmd FileType scheme,racket inoremap [ []<Esc>ha
 	" vim-racket automatically uses `raco fmt` as the format program, but
-	" there are two drawbacks:
-	" - It does not output anything on standard out in case of error
-	"   (major issue when using it as an automatic filter).
-	" - It does not format comments (but the standard Vim formatter does
-	"   that well enough).
+	" it does not format comments, and the standard Vim formatter does
+	" that well enough.
 	autocmd FileType racket setlocal formatprg=
-	" Use `raco fmt` as indenter for Racket family, with my workaround
-	autocmd FileType racket setlocal equalprg=raco-fmt-or-cat.sh\ 2>/dev/null
+	autocmd FileType racket setlocal equalprg=raco\ fmt
 augroup END
 
 " Auto-commands that trigger when writing files
@@ -258,7 +248,7 @@ augroup writing
 	autocmd BufWritePre *.c,*.cpp,*.glsl,*.h,*.hpp %ClangFormat
 	" Automatically format Lisp family languages on save, with our
 	" workaround.
-	autocmd BufWritePre *.rkt KeepView %!raco-fmt-or-cat.sh 2>/dev/null
+	autocmd BufWritePre *.rkt KeepView %!raco fmt
 	autocmd BufWritePost *.py call flake8#Flake8()
 augroup END
 
