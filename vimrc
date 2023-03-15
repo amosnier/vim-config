@@ -130,6 +130,7 @@ let g:ycm_clangd_uses_ycmd_caching = 0
 " Use installed clangd, not YCM-bundled clangd, in order control its updating
 " more easily.
 let g:ycm_clangd_binary_path = exepath("clangd")
+let g:ycm_enable_semantic_highlighting=1
 
 " Flake8 variables
 " I want my own mapping instead of the standard one.
@@ -145,8 +146,6 @@ command! -range ClangFormat <line1>,<line2>py3file /usr/share/vim/addons/syntax/
 call plug#begin()
 " GPG support
 Plug 'jamessan/vim-gnupg'
-" Better C/C++ syntax highlighting
-Plug 'bfrg/vim-cpp-modern'
 " Support for autopep8
 Plug 'tell-k/vim-autopep8'
 " Support for Python Linting
@@ -320,9 +319,10 @@ cnoremap <leader>md .md.gpg<cr>:q<cr>
 
 " YouCompleteMe bindings
 nmap <leader>c <plug>(YCMHover)
+nmap <leader>w <Plug>(YCMFindSymbolInWorkspace)
+nmap <leader>d <Plug>(YCMFindSymbolInDocument)
 nnoremap <leader>g :YcmCompleter GoTo<cr>
 nnoremap <leader>r :YcmCompleter GoToReferences<cr>
-nnoremap <leader>s :<C-u>execute 'YcmCompleter GoToSymbol '.input('Symbol: ')<cr>
 
 " Bind f5 to pastetoggle, helps with pasting from the clipboard
 set pastetoggle=<f5>
