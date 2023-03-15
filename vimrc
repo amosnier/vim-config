@@ -131,6 +131,7 @@ let g:ycm_clangd_uses_ycmd_caching = 0
 " more easily.
 let g:ycm_clangd_binary_path = exepath("clangd")
 let g:ycm_enable_semantic_highlighting=1
+let g:ycm_enable_inlay_hints=1
 
 " Flake8 variables
 " I want my own mapping instead of the standard one.
