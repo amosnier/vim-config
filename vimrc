@@ -207,6 +207,7 @@ let g:airline#extensions#whitespace#skip_indent_check_ft = {
 	\ 'cpp': ['mixed-indent-file'],
 	\ 'c': ['mixed-indent-file']
 	\ }
+let g:airline_powerline_fonts = 1
 
 " Autopep8 settings
 let g:autopep8_disable_show_diff=1
