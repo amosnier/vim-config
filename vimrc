@@ -339,6 +339,11 @@ nnoremap <f7> :make<cr>
 " FZF bindings
 nnoremap <leader>t :GFiles<cr>
 nnoremap <leader>f :BLines<cr>
+nnoremap <leader>b :Buffers<cr>
+
+" Buffer mappings
+nnoremap <leader>nn :bnext<cr>
+nnoremap <leader>nb :bprev<cr>
 
 " Mappings partly related to visual star search, customized for ripgrep
 " through FZF. Run the equivalent of Rg, with an automatically fetched literal
