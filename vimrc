@@ -182,6 +182,9 @@ Plug 'alx741/vim-hindent'
 Plug 'vim-scripts/anwolib'
 " Doxygen support
 Plug 'vim-scripts/DoxygenToolkit.vim'
+" Vim airline
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 " Default list of recipients for GPG
