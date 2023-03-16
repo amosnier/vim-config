@@ -5,7 +5,9 @@ Alain Mosnier's vim config
 
 I believe I had to do the following to build and install a so-called
 huge Vim, with every option I could think of, after cloning
-github.com/vim/vim (commit e638acc, on Xubuntu 22.10):
+github.com/vim/vim (commit
+[e638acc](https://github.com/vim/vim/commit/e638acc9274112ca5ac6b610b01e44ab2a1e19ce),
+on Xubuntu 22.10):
 
     $ cd vim
 
