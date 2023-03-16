@@ -320,11 +320,12 @@ nnoremap <f7> :make<cr>
 
 " FZF bindings
 nnoremap <leader>t :GFiles<cr>
+nnoremap <leader>gt :Locate<space>
 nnoremap <leader>f :BLines<cr>
 nnoremap <leader>b :Buffers<cr>
+nnoremap <leader>gb :buffers<cr>
 nnoremap <leader>r :Rg<space>
 nnoremap <leader>l :Rglit<space>
-nnoremap <leader>gt :Locate<space>
 
 " Buffer mappings
 nnoremap ŋ :bnext<cr>
