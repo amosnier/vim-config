@@ -294,26 +294,8 @@ command! -bang -nargs=* Rglit call FzfRgLiteralString(<q-args>, <bang>0)
 " Keyboard shortcuts
 " ==================
 
-" Make some keys that are often used in normal mode more easily accessible
-map å \
-map ö [
-map ä ]
-map Ö <c-[>
-map Ä <c-]>
-map ¤ ^
-map § `
-map g¤ g^
-cmap ¤ ^
-
-" Mappings for jumping around
-map § `
-map '' ``
-map '. `.
-map '¤ `^
-map 'ö `[
-map 'ä `]
-map '< `<
-map '> `>
+" Set the leader key
+let mapleader = 'å'
 
 " Insert date and time with no space
 cnoremap <expr> <leader>dt DateTimeStringNoSpace()
@@ -340,10 +322,13 @@ nnoremap <f7> :make<cr>
 nnoremap <leader>t :GFiles<cr>
 nnoremap <leader>f :BLines<cr>
 nnoremap <leader>b :Buffers<cr>
+nnoremap <leader>r :Rg<space>
+nnoremap <leader>l :Rglit<space>
+nnoremap <leader>gt :Locate<space>
 
 " Buffer mappings
-nnoremap <leader>nn :bnext<cr>
-nnoremap <leader>nb :bprev<cr>
+nnoremap ŋ :bnext<cr>
+nnoremap đ :bprev<cr>
 
 " Mappings partly related to visual star search, customized for ripgrep
 " through FZF. Run the equivalent of Rg, with an automatically fetched literal
