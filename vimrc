@@ -331,6 +331,12 @@ nnoremap <leader>ås :Rglit<space>
 nnoremap ŋ :bnext<cr>
 nnoremap đ :bprev<cr>
 
+" Quickfix mappings
+nnoremap “ :cnext<cr>
+nnoremap „ :cprev<cr>
+nnoremap <leader>q :copen<cr>
+nnoremap <leader>åq :cclose<cr>
+
 " Mappings partly related to visual star search, customized for ripgrep
 " through FZF. Run the equivalent of Rg, with an automatically fetched literal
 " string. In normal mode, the string is the current search pattern. In visual
