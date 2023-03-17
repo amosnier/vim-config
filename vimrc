@@ -172,6 +172,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-commentary'
 " Racket support
 Plug 'benknoble/vim-racket'
 " Vim visual search (suggested in Practical Vim)
@@ -291,13 +292,12 @@ endfunction
 command! -bang -nargs=* Rglit call FzfRgLiteralString(<q-args>, <bang>0)
 
 " ======================================================
-"  Keyboard shortcuts, adapted to a my Swedish keyboard
+"  Keyboard shortcuts, adapted to my (Swedish) keyboard
 " ======================================================
 
-" Set the leader key
-let mapleader = 'å'
-
-" Make the in Vim commonly used square brackets more easily accessible
+" Make the in Vim commonly used backslash (standard leader) and square
+" brackets more easily accessible
+map å \
 map ä ]
 map ö [
 
