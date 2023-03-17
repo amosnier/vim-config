@@ -290,12 +290,16 @@ endfunction
 " Command for the previous function
 command! -bang -nargs=* Rglit call FzfRgLiteralString(<q-args>, <bang>0)
 
-" ==================
-" Keyboard shortcuts
-" ==================
+" ======================================================
+"  Keyboard shortcuts, adapted to a my Swedish keyboard
+" ======================================================
 
 " Set the leader key
 let mapleader = 'å'
+
+" Make the in Vim commonly used square brackets more easily accessible
+map ä ]
+map ö [
 
 " Insert date and time with no space
 cnoremap <expr> <leader>dt DateTimeStringNoSpace()
@@ -339,8 +343,8 @@ nnoremap <leader>åq :cclose<cr>
 
 " Mappings partly related to visual star search, customized for ripgrep
 " through FZF. Run the equivalent of Rg, with an automatically fetched literal
-" string. In normal mode, the string is the current search pattern. In visual
-" mode, we take the help of visual star search to get the current selection as
-" the literal string.
-nnoremap <leader>* :call FzfRgLiteralString(expand("<cword>"))<cr>
-vnoremap <leader>* :<C-u>call VisualStarSearchSet('/', 'raw')<cr>:call FzfRgLiteralString(@/)<cr>
+" string. In normal mode, the string is the current word, made into the search
+" pattern. In visual mode, we take the help of visual star search to get the
+" current selection as the literal string.
+nnoremap <leader>a *:call FzfRgLiteralString(expand("<cword>"))<cr>
+vnoremap <leader>a :<C-u>call VisualStarSearchSet('/', 'raw')<cr>:call FzfRgLiteralString(@/)<cr>
