@@ -87,7 +87,7 @@ function! BuildYCM(info)
 	" - status: 'installed', 'updated', or 'unchanged'
 	" - force:  set on PlugInstall! or PlugUpdate!
 	if a:info.status == 'installed' || a:info.force
-		!./install.py --clangd-completer
+		!./install.py --all
 	endif
 endfunction
 
@@ -177,8 +177,6 @@ Plug 'tpope/vim-commentary'
 Plug 'benknoble/vim-racket'
 " Vim visual search (suggested in Practical Vim)
 Plug 'bronson/vim-visual-star-search'
-" Haskell indenting
-Plug 'alx741/vim-hindent'
 " Yet another Vim library, for KeepView
 Plug 'vim-scripts/anwolib'
 " Doxygen support
@@ -249,11 +247,14 @@ augroup END
 " Auto-commands that trigger when writing files
 augroup writing
 	autocmd!
-	" Same kind of auto-format as for Python for C/C++, but with clang-format
+	" Note: since ClangFormat is used for GLSL, we let it handle C and C++
+	" directly too (the alternative would be going through YCM).
 	autocmd BufWritePre *.c,*.cpp,*.glsl,*.h,*.hpp %ClangFormat
-	" Automatically format Lisp family languages on save, with our
-	" workaround.
+	" Let YCM format Haskell files (via LSP).
+	autocmd BufWritePre *.hs,*.lhs YcmCompleter Format
+	" Automatically format Racket on save.
 	autocmd BufWritePre *.rkt KeepView %!raco fmt
+	" Lint Python after save.
 	autocmd BufWritePost *.py call flake8#Flake8()
 augroup END
 
