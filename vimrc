@@ -220,8 +220,6 @@ augroup filetypes
 	autocmd FileType python setlocal formatprg=autopep8\ -aa\ -
 	autocmd FileType python map <buffer> <F3> :call flake8#Flake8()<CR>
 	autocmd FileType html setlocal textwidth=106
-	" Use `clang-format` for C family indentation
-	autocmd FileType c,cpp,glsl setlocal equalprg=clang-format
 	autocmd FileType c,cpp,glsl,sh setlocal textwidth=120
 	autocmd FileType c,cpp,glsl set comments^=:///
 	autocmd FileType markdown setlocal textwidth=72
@@ -237,14 +235,11 @@ augroup END
 " Auto-commands that trigger when writing files
 augroup writing
 	autocmd!
-	" Note: since ClangFormat is used for GLSL, we let it handle C and C++
-	" directly too (the alternative would be going through YCM).
-	autocmd BufWritePre *.c,*.cpp,*.glsl,*.h,*.hpp %ClangFormat
-	" Let YCM format Haskell files (via LSP).
+	autocmd BufWritePre *.glsl %ClangFormat
+	autocmd BufWritePre *.c,*.cpp,,*.h,*.hpp  YcmCompleter Format
 	autocmd BufWritePre *.hs,*.lhs YcmCompleter Format
-	" Automatically format Racket on save. TODO: install LSP server!
+	" TODO: test Racket LSP server!
 	"autocmd BufWritePre *.rkt YcmCompleter Format
-	" Lint Python after save.
 	autocmd BufWritePost *.py call flake8#Flake8()
 augroup END
 
