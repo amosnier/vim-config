@@ -173,8 +173,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
-" Racket support
-Plug 'benknoble/vim-racket'
 " Vim visual search (suggested in Practical Vim)
 Plug 'bronson/vim-visual-star-search'
 " Yet another Vim library, for KeepView
@@ -234,14 +232,6 @@ augroup filetypes
 	autocmd FileType markdown nnoremap <buffer> <F2> :call AlternateSpelllang()<cr>
 	" No tabs in Lisp..., or in cmake
 	autocmd FileType lisp,scheme,racket,cmake setlocal expandtab
-	" Pair parentheses in Lisp
-	autocmd FileType lisp,scheme,racket inoremap ( ()<Esc>ha
-	autocmd FileType scheme,racket inoremap [ []<Esc>ha
-	" vim-racket automatically uses `raco fmt` as the format program, but
-	" it does not format comments, and the standard Vim formatter does
-	" that well enough.
-	autocmd FileType racket setlocal formatprg=
-	autocmd FileType racket setlocal equalprg=raco\ fmt
 augroup END
 
 " Auto-commands that trigger when writing files
@@ -252,8 +242,8 @@ augroup writing
 	autocmd BufWritePre *.c,*.cpp,*.glsl,*.h,*.hpp %ClangFormat
 	" Let YCM format Haskell files (via LSP).
 	autocmd BufWritePre *.hs,*.lhs YcmCompleter Format
-	" Automatically format Racket on save.
-	autocmd BufWritePre *.rkt KeepView %!raco fmt
+	" Automatically format Racket on save. TODO: install LSP server!
+	"autocmd BufWritePre *.rkt YcmCompleter Format
 	" Lint Python after save.
 	autocmd BufWritePost *.py call flake8#Flake8()
 augroup END
