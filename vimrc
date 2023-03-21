@@ -214,11 +214,6 @@ let g:autopep8_on_save = 1
 augroup filetypes
 	" Clear group to provide support for multiple sourcing
 	autocmd!
-	" Auto-PEP8 formatting filter. Requires `pip install autopep8`.
-	" Doubly-aggressive (break lines and stuff). Ended with hyphen to
-	" indicate standard in as a source.
-	autocmd FileType python setlocal formatprg=autopep8\ -aa\ -
-	autocmd FileType python map <buffer> <F3> :call flake8#Flake8()<CR>
 	autocmd FileType html setlocal textwidth=106
 	autocmd FileType c,cpp,glsl,sh setlocal textwidth=120
 	autocmd FileType c,cpp,glsl set comments^=:///
