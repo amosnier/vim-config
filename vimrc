@@ -318,7 +318,7 @@ nnoremap đ :bprev<cr>
 
 " Quickfix mappings
 nnoremap “ :cnext<cr>
-nnoremap „ :cprev<cr>
+nnoremap ” :cprev<cr>
 nnoremap <leader>q :copen<cr>
 nnoremap <leader>åq :cclose<cr>
 
