@@ -331,6 +331,7 @@ nnoremap <leader>a *:call FzfRgLiteralString(expand("<cword>"))<cr>
 vnoremap <leader>a :<C-u>call VisualStarSearchSet('/', 'raw')<cr>:call FzfRgLiteralString(@/)<cr>
 
 " ## added by OPAM user-setup for vim / base ## 93ee63e278bdfc07d1139a748ed3fff2 ## you can edit, but keep this line
+" NOTE: modified according to recommendation in https://github.com/ocaml-opam/opam-user-setup/issues/53
 let s:opam_share_dir = system("opam config var share")
 let s:opam_share_dir = substitute(s:opam_share_dir, '[\r\n]*$', '', '')
 
@@ -353,11 +354,11 @@ endfunction
 let s:opam_configuration['merlin'] = function('OpamConfMerlin')
 
 let s:opam_packages = ["ocp-indent", "ocp-index", "merlin"]
-let s:opam_check_cmdline = ["opam list --installed --short --safe --color=never"] + s:opam_packages
-let s:opam_available_tools = split(system(join(s:opam_check_cmdline)))
+let s:opam_available_tools = []
 for tool in s:opam_packages
 	" Respect package order (merlin should be after ocp-index)
-	if count(s:opam_available_tools, tool) > 0
+	if isdirectory(s:opam_share_dir . "/" . tool)
+		call add(s:opam_available_tools, tool)
 		call s:opam_configuration[tool]()
 	endif
 endfor
