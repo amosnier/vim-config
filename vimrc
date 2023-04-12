@@ -182,6 +182,8 @@ Plug 'vim-scripts/DoxygenToolkit.vim'
 " Vim airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+" Recommended for OCaml
+Plug 'sbdchd/neoformat'
 call plug#end()
 
 " Default list of recipients for GPG
