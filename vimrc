@@ -240,6 +240,11 @@ augroup writing
 	autocmd BufWritePost *.py call flake8#Flake8()
 augroup END
 
+augroup files
+	autocmd!
+	autocmd BufRead,BufNewFile .clangd set filetype=yaml
+augroup END
+
 " Automatic write before make (among others)
 set autowrite
 
