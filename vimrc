@@ -223,6 +223,7 @@ augroup filetypes
 	autocmd FileType markdown,gitcommit,c,cpp,glsl,vim,python,lisp,scheme,racket,sh,haskell setlocal spell
 	autocmd FileType markdown,gitcommit setlocal complete+=kspell
 	autocmd FileType markdown setlocal autoindent
+	autocmd FileType cabal setlocal autoindent
 	" Alternate spellcheck language
 	autocmd FileType markdown nnoremap <buffer> <F2> :call AlternateSpelllang()<cr>
 	" No tabs in Lisp..., or in cmake
