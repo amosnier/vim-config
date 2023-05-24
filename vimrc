@@ -236,6 +236,7 @@ augroup writing
 	autocmd BufWritePre *.glsl %ClangFormat
 	autocmd BufWritePre *.c,*.cpp,,*.h,*.hpp  YcmCompleter Format
 	autocmd BufWritePre *.hs,*.lhs YcmCompleter Format
+	autocmd BufWritePre *.rs YcmCompleter Format
 	" TODO: test Racket LSP server!
 	"autocmd BufWritePre *.rkt YcmCompleter Format
 	autocmd BufWritePost *.py call flake8#Flake8()
@@ -338,3 +339,6 @@ nnoremap <leader>åq :cclose<cr>
 " current selection as the literal string.
 nnoremap <leader>a *:call FzfRgLiteralString(expand("<cword>"))<cr>
 vnoremap <leader>a :<C-u>call VisualStarSearchSet('/', 'raw')<cr>:call FzfRgLiteralString(@/)<cr>
+
+" Doxygen
+nnoremap <leader>x :Dox<cr>
