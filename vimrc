@@ -223,6 +223,7 @@ augroup filetypes
 	autocmd FileType markdown setlocal textwidth=72
 	autocmd FileType markdown,gitcommit,c,cpp,glsl,vim,python,lisp,scheme,racket,sh,haskell setlocal spell
 	autocmd FileType markdown,gitcommit setlocal complete+=kspell
+	autocmd FileType markdown,gitcommit set formatoptions-=2 ai
 	autocmd FileType markdown setlocal autoindent
 	autocmd FileType cabal setlocal autoindent
 	" Alternate spellcheck language
