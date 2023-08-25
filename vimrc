@@ -223,7 +223,10 @@ augroup filetypes
 	autocmd FileType markdown setlocal textwidth=72
 	autocmd FileType markdown,gitcommit,c,cpp,glsl,vim,python,lisp,scheme,racket,sh,haskell setlocal spell
 	autocmd FileType markdown,gitcommit setlocal complete+=kspell
-	autocmd FileType markdown,gitcommit set formatoptions-=2 ai
+	" Not (at the time of writing) totally understood trick that seems to
+	" provide better handling of formatting lists in comments or markdown,
+	" yet seems to break no other formatting (to be confirmed).
+	autocmd FileType markdown,gitcommit,c,cpp set formatoptions-=2 ai
 	autocmd FileType markdown setlocal autoindent
 	autocmd FileType cabal setlocal autoindent
 	" Alternate spellcheck language
