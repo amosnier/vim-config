@@ -226,7 +226,7 @@ augroup filetypes
 	" Not (at the time of writing) totally understood trick that seems to
 	" provide better handling of formatting lists in comments or markdown,
 	" yet seems to break no other formatting (to be confirmed).
-	autocmd FileType markdown,gitcommit,c,cpp set formatoptions-=2 ai
+	autocmd FileType markdown,gitcommit,c,cpp setlocal formatoptions-=2 ai
 	autocmd FileType markdown setlocal autoindent
 	autocmd FileType cabal setlocal autoindent
 	" Alternate spellcheck language
@@ -242,6 +242,7 @@ augroup writing
 	autocmd BufWritePre *.c,*.cpp,,*.h,*.hpp  YcmCompleter Format
 	autocmd BufWritePre *.hs,*.lhs YcmCompleter Format
 	autocmd BufWritePre *.rs YcmCompleter Format
+	autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx YcmCompleter Format
 	" TODO: test Racket LSP server!
 	"autocmd BufWritePre *.rkt YcmCompleter Format
 	autocmd BufWritePost *.py call flake8#Flake8()
