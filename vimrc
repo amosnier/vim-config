@@ -104,6 +104,14 @@ let g:ycm_language_server += [
 	\     'project_root_files': [ 'stack.yaml', 'cabal.project', 'package.yaml', 'hie.yaml' ],
 	\   },
 	\ ]
+let g:ycm_language_server += [
+	\   {
+	\     'name': 'prisma-language-server',
+	\     'cmdline': [ 'prisma-language-server', '--stdio' ],
+	\     'filetypes': [ 'prisma' ],
+	\     'project_root_files': [ 'schema.prisma' ],
+	\   },
+	\ ]
 
 " YCM-clangd arguments:
 "
@@ -185,6 +193,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " Recommended for OCaml
 Plug 'sbdchd/neoformat'
+" Prisma ORM
+Plug 'prisma/vim-prisma'
 call plug#end()
 
 " Default list of recipients for GPG
