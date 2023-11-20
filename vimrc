@@ -237,12 +237,12 @@ augroup filetypes
 	" provide better handling of formatting lists in comments or markdown,
 	" yet seems to break no other formatting (to be confirmed).
 	autocmd FileType markdown,gitcommit,c,cpp setlocal formatoptions-=2 ai
-	autocmd FileType markdown setlocal autoindent
-	autocmd FileType cabal setlocal autoindent
+	autocmd FileType markdown,cabal,prisma setlocal autoindent
 	" Alternate spellcheck language
 	autocmd FileType markdown nnoremap <buffer> <F2> :call AlternateSpelllang()<cr>
 	" No tabs in Lisp..., or in cmake, cabal, ...
-	autocmd FileType lisp,scheme,racket,cmake,cabal setlocal expandtab
+	autocmd FileType lisp,scheme,racket,cmake,cabal,prisma setlocal expandtab
+	autocmd FileType prisma setlocal tabstop=2 | setlocal shiftwidth=2
 augroup END
 
 " Auto-commands that trigger when writing files
@@ -252,7 +252,7 @@ augroup writing
 	autocmd BufWritePre *.c,*.cpp,,*.h,*.hpp  YcmCompleter Format
 	autocmd BufWritePre *.hs,*.lhs YcmCompleter Format
 	autocmd BufWritePre *.rs YcmCompleter Format
-	autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx YcmCompleter Format
+	autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx,*.prisma YcmCompleter Format
 	" TODO: test Racket LSP server!
 	"autocmd BufWritePre *.rkt YcmCompleter Format
 	autocmd BufWritePost *.py call flake8#Flake8()
