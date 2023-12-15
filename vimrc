@@ -56,6 +56,11 @@ set exrc
 " Enable mouse support
 set mouse=a
 
+" Hide unloaded buffers, do not abandon them. This is really important when
+" indexing large source code files, in order to not reindex every time the
+" file is re-entered.
+set hidden
+
 " When joining lines, do not add an extra-space between sentences. For the
 " record, such an extra-space is sometimes used to improve readability with
 " monospaced fonts, but I am myself not used to that.
