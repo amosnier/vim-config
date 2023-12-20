@@ -117,6 +117,15 @@ let g:ycm_language_server += [
 	\     'project_root_files': [ 'schema.prisma' ],
 	\   },
 	\ ]
+" The following semantic token is missing from the predefined tokens in YCM,
+" apparently
+let MY_YCM_HIGHLIGHT_GROUP = {
+	\   'bracket': 'Normal',
+\ }
+for tokenType in keys( MY_YCM_HIGHLIGHT_GROUP )
+	call prop_type_add( 'YCM_HL_' . tokenType,
+		      \ { 'highlight': MY_YCM_HIGHLIGHT_GROUP[ tokenType ] } )
+endfor
 
 " YCM-clangd arguments:
 "
