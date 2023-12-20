@@ -336,6 +336,7 @@ nnoremap <leader>g :YcmCompleter GoTo<cr>
 nnoremap <leader>r :YcmCompleter GoToReferences<cr>
 nnoremap <leader>z :YcmCompleter FixIt<cr>
 nnoremap <leader>e :YcmCompleter Format<cr>
+vnoremap <leader>e :YcmCompleter Format<cr>
 nnoremap <silent> <localleader>h <Plug>(YCMToggleInlayHints)
 
 " Bind f5 to pastetoggle, helps with pasting from the clipboard
