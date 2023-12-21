@@ -346,7 +346,7 @@ set pastetoggle=<f5>
 nnoremap <f7> :make<cr>
 
 " FZF bindings
-nnoremap <leader>t :GFiles<cr>
+nnoremap <leader>t :GFiles --recurse-submodules<cr>
 nnoremap <leader>åt :Locate<space>
 nnoremap <leader>f :BLines<cr>
 nnoremap <leader>b :Buffers<cr>
