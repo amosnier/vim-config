@@ -117,17 +117,23 @@ let g:ycm_language_server += [
 	\     'project_root_files': [ 'schema.prisma' ],
 	\   },
 	\ ]
-if !exists("MY_YCM_HIGHLIGHT_GROUP")
-	" The following semantic token is missing from the predefined tokens in YCM,
-	" apparently
-	let MY_YCM_HIGHLIGHT_GROUP = {
-		\   'bracket': 'Normal',
-	\ }
-	for tokenType in keys( MY_YCM_HIGHLIGHT_GROUP )
-		call prop_type_add( 'YCM_HL_' . tokenType,
-			      \ { 'highlight': MY_YCM_HIGHLIGHT_GROUP[ tokenType ] } )
-	endfor
-endif
+let g:ycm_language_server += [
+	\   {
+	\     'name': 'r-language-server',
+	\     'cmdline': [ 'R', '--slave', '-e', 'languageserver::run()' ],
+	\     'filetypes': [ 'r' ],
+	\   },
+	\ ]
+" The following semantic token is missing from the predefined tokens in YCM,
+" apparently
+let MY_YCM_HIGHLIGHT_GROUP = {
+	\   'bracket': 'Normal',
+\ }
+for tokenType in keys( MY_YCM_HIGHLIGHT_GROUP )
+	call prop_type_delete( 'YCM_HL_' . tokenType )
+	call prop_type_add( 'YCM_HL_' . tokenType,
+		      \ { 'highlight': MY_YCM_HIGHLIGHT_GROUP[ tokenType ] } )
+endfor
 
 " YCM-clangd arguments:
 "
