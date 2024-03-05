@@ -117,15 +117,17 @@ let g:ycm_language_server += [
 	\     'project_root_files': [ 'schema.prisma' ],
 	\   },
 	\ ]
-" The following semantic token is missing from the predefined tokens in YCM,
-" apparently
-let MY_YCM_HIGHLIGHT_GROUP = {
-	\   'bracket': 'Normal',
-\ }
-for tokenType in keys( MY_YCM_HIGHLIGHT_GROUP )
-	call prop_type_add( 'YCM_HL_' . tokenType,
-		      \ { 'highlight': MY_YCM_HIGHLIGHT_GROUP[ tokenType ] } )
-endfor
+if !exists("MY_YCM_HIGHLIGHT_GROUP")
+	" The following semantic token is missing from the predefined tokens in YCM,
+	" apparently
+	let MY_YCM_HIGHLIGHT_GROUP = {
+		\   'bracket': 'Normal',
+	\ }
+	for tokenType in keys( MY_YCM_HIGHLIGHT_GROUP )
+		call prop_type_add( 'YCM_HL_' . tokenType,
+			      \ { 'highlight': MY_YCM_HIGHLIGHT_GROUP[ tokenType ] } )
+	endfor
+endif
 
 " YCM-clangd arguments:
 "
@@ -209,6 +211,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'sbdchd/neoformat'
 " Prisma ORM
 Plug 'prisma/vim-prisma'
+" R
+Plug 'jalvesaq/Nvim-R'
 call plug#end()
 
 " Default list of recipients for GPG
