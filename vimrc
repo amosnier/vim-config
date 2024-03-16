@@ -273,7 +273,7 @@ augroup END
 augroup writing
 	autocmd!
 	autocmd BufWritePre *.glsl %ClangFormat
-	autocmd BufWritePre *.c,*.cpp,,*.h,*.hpp  YcmCompleter Format
+	autocmd BufWritePre *.c,*.cpp,,*.h,*.hpp YcmCompleter Format
 	autocmd BufWritePre *.hs,*.lhs YcmCompleter Format
 	autocmd BufWritePre *.rs YcmCompleter Format
 	autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx,*.prisma YcmCompleter Format
