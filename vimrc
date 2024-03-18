@@ -325,11 +325,10 @@ command! -bang -nargs=* Rglit call FzfRgLiteralString(<q-args>, <bang>0)
 "  Keyboard shortcuts, adapted to my (Swedish) keyboard
 " ======================================================
 
-" Make the in Vim commonly used backslash (standard leader) and square
-" brackets more easily accessible
+" Make the in Vim commonly used backslash (standard leader) more easily
+" accessible, and similarly map localleader
 map å \
-map ä ]
-map ö [
+let maplocalleader = "ä"
 
 " Insert date and time with no space
 cnoremap <expr> <leader>dt DateTimeStringNoSpace()
