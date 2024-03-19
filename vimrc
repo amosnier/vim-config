@@ -265,8 +265,8 @@ augroup filetypes
 	" Alternate spellcheck language
 	autocmd FileType markdown nnoremap <buffer> <F2> :call AlternateSpelllang()<cr>
 	" No tabs in Lisp..., or in cmake, cabal, ...
-	autocmd FileType lisp,scheme,racket,cmake,cabal,prisma setlocal expandtab
-	autocmd FileType prisma setlocal tabstop=2 | setlocal shiftwidth=2
+	autocmd FileType r,lisp,scheme,racket,cmake,cabal,prisma setlocal expandtab
+	autocmd FileType r,prisma setlocal tabstop=2 | setlocal shiftwidth=2
 augroup END
 
 " Auto-commands that trigger when writing files
