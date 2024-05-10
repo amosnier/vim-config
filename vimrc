@@ -124,10 +124,11 @@ let g:ycm_language_server += [
 	\     'filetypes': [ 'r' ],
 	\   },
 	\ ]
-" The following semantic token is missing from the predefined tokens in YCM,
-" apparently
+" The following semantic tokens are missing from the predefined tokens in YCM,
+" apparently.
 let MY_YCM_HIGHLIGHT_GROUP = {
 	\   'bracket': 'Normal',
+	\   'concept': 'Normal',
 \ }
 for tokenType in keys( MY_YCM_HIGHLIGHT_GROUP )
 	call prop_type_delete( 'YCM_HL_' . tokenType )
