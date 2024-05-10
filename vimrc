@@ -159,7 +159,8 @@ let g:ycm_clangd_args = [
 " Let clangd fully control code completion
 let g:ycm_clangd_uses_ycmd_caching = 0
 " Use installed clangd, not YCM-bundled clangd, in order to control its
-" updating more easily.
+" updating more easily (will only be used if found, apparently, which is
+" good).
 let g:ycm_clangd_binary_path = exepath("clangd")
 let g:ycm_enable_semantic_highlighting=1
 let g:ycm_enable_inlay_hints=1
