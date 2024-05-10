@@ -56,6 +56,11 @@ set exrc
 " Enable mouse support
 set mouse=a
 
+" Although that is not very clear when reading the help, the following seems
+" to make copy/paste a lot easier between VIM and the clipboard. More
+" specifically, doing it as usual in both worlds just seems to work.
+set clipboard=unnamedplus
+
 " Hide unloaded buffers, do not abandon them. This is really important when
 " indexing large source code files, in order to not reindex every time the
 " file is re-entered.
