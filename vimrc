@@ -158,8 +158,8 @@ let g:ycm_clangd_args = [
 " YCM clangd related values, as recommended by the LLVM project
 " Let clangd fully control code completion
 let g:ycm_clangd_uses_ycmd_caching = 0
-" Use installed clangd, not YCM-bundled clangd, in order control its updating
-" more easily.
+" Use installed clangd, not YCM-bundled clangd, in order to control its
+" updating more easily.
 let g:ycm_clangd_binary_path = exepath("clangd")
 let g:ycm_enable_semantic_highlighting=1
 let g:ycm_enable_inlay_hints=1
@@ -247,6 +247,9 @@ let g:airline_powerline_fonts = 1
 let g:autopep8_disable_show_diff=1
 let g:autopep8_aggressive=2
 let g:autopep8_on_save = 1
+
+" Doxygen comments in C++ style (///)
+let g:DoxygenToolkit_commentType = "C++"
 
 augroup filetypes
 	" Clear group to provide support for multiple sourcing
