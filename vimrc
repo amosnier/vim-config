@@ -226,6 +226,8 @@ Plug 'sbdchd/neoformat'
 Plug 'prisma/vim-prisma'
 " R
 Plug 'jalvesaq/Nvim-R'
+" MD TOC
+Plug 'mzlogin/vim-markdown-toc'
 call plug#end()
 
 " Default list of recipients for GPG
