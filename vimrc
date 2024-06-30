@@ -335,10 +335,11 @@ command! -bang -nargs=* Rglit call FzfRgLiteralString(<q-args>, <bang>0)
 "  Keyboard shortcuts, adapted to my (Swedish) keyboard
 " ======================================================
 
-" Make the in Vim commonly used backslash (standard leader) more easily
-" accessible, and similarly map localleader
+" Make the Swedish keyboard more Vim-friendly, especially when using
+" vim-unimpaired
 map å \
-let maplocalleader = "ä"
+map ö [
+map ä ]
 
 " Insert date and time with no space
 cnoremap <expr> <leader>dt DateTimeStringNoSpace()
@@ -356,7 +357,7 @@ nnoremap <leader>r :YcmCompleter GoToReferences<cr>
 nnoremap <leader>z :YcmCompleter FixIt<cr>
 nnoremap <leader>e :YcmCompleter Format<cr>
 vnoremap <leader>e :YcmCompleter Format<cr>
-nnoremap <silent> <localleader>h <Plug>(YCMToggleInlayHints)
+nnoremap <leader>h <Plug>(YCMToggleInlayHints)
 
 " Bind f5 to pastetoggle, helps with pasting from the clipboard
 set pastetoggle=<f5>
@@ -373,13 +374,7 @@ nnoremap <leader>åb :buffers<cr>
 nnoremap <leader>s :Rg<space>
 nnoremap <leader>ås :Rglit<space>
 
-" Buffer mappings
-nnoremap ŋ :bnext<cr>
-nnoremap đ :bprev<cr>
-
 " Quickfix mappings
-nnoremap “ :cprev<cr>
-nnoremap ” :cnext<cr>
 nnoremap <leader>q :copen<cr>
 nnoremap <leader>åq :cclose<cr>
 
