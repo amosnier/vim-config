@@ -342,6 +342,8 @@ command! -bang -nargs=* Rglit call FzfRgLiteralString(<q-args>, <bang>0)
 map å \
 map ö [
 map ä ]
+map § `
+map ½ ~
 
 " Insert date and time with no space
 cnoremap <expr> <leader>dt DateTimeStringNoSpace()
