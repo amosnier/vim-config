@@ -1,9 +1,10 @@
-" Disable vi compatibility as early as possible
-set nocompatible
-
-" Enable loading of plugin files for specific file types, and if not yet
-" enabled, filetype detection
-filetype plugin on
+" The comments and the commands below come verbatim from vim91/defaults.vim.
+" Use Vim settings, rather than Vi settings (much better!).
+" This must be first, because it changes other options as a side effect.
+" Avoid side effects when it was already reset.
+if &compatible
+  set nocompatible
+endif
 
 " Set leader and local leader keys
 let mapleader = 'å'
