@@ -138,7 +138,7 @@ let MY_YCM_HIGHLIGHT_GROUP = {
 for tokenType in keys( MY_YCM_HIGHLIGHT_GROUP )
 	call prop_type_delete( 'YCM_HL_' . tokenType )
 	call prop_type_add( 'YCM_HL_' . tokenType,
-		      \ { 'highlight': MY_YCM_HIGHLIGHT_GROUP[ tokenType ] } )
+		\ { 'highlight': MY_YCM_HIGHLIGHT_GROUP[ tokenType ] } )
 endfor
 
 " YCM-clangd arguments:
