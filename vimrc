@@ -27,4 +27,6 @@ call plug#begin()
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 	Plug 'junegunn/fzf.vim'
 
+	" Vim visual search (suggested in Practical Vim)
+	Plug 'bronson/vim-visual-star-search'
 call plug#end()
