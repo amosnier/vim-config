@@ -29,4 +29,14 @@ call plug#begin()
 
 	" Vim visual search (suggested in Practical Vim)
 	Plug 'bronson/vim-visual-star-search'
+
+	" unimpaired.vim
+	Plug 'tpope/vim-unimpaired'
+
+	" YouCompleteMe. Follow the official plugin instructions for complete
+	" installation after initial installation by Vim.
+	" https://github.com/ycm-core/YouCompleteMe?tab=readme-ov-file#linux-64-bit
+	" at the time of writing.
+	Plug 'ycm-core/YouCompleteMe'
+
 call plug#end()
