@@ -1,14 +1,14 @@
 " Because we use a modern plugin manager, we can be sure that the contents of
 " the plugin directory will be executed before any external plugin, and hence
 " we can have one file per configuration section in the plugin directory,
-" which gives us structure clarity. This also allows us to limits this file
+" which gives us structure clarity. This also allows us to limit this file
 " to:
 " - Setting `nocompatible`.
 " - Installing external plugins.
 
-" According to vim91/defaults.vim. This must be first, because it changes
-" other options as a side effect. Avoid side effects when it was already
-" reset.
+" From to vim91/defaults.vim:
+" This must be first, because it changes other options as a side effect. Avoid
+" side effects when it was already reset.
 if &compatible
 	set nocompatible
 endif
@@ -30,7 +30,12 @@ call plug#begin()
 	" Vim visual search (suggested in Practical Vim)
 	Plug 'bronson/vim-visual-star-search'
 
-	" unimpaired.vim
+	" Various go to have plugins from Tim Pope
+	Plug 'tpope/vim-abolish'
+	Plug 'tpope/vim-commentary'
+	Plug 'tpope/vim-fugitive'
+	Plug 'tpope/vim-repeat'
+	Plug 'tpope/vim-surround'
 	Plug 'tpope/vim-unimpaired'
 
 	" YouCompleteMe. Follow the official plugin instructions for complete
