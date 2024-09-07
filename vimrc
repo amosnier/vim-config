@@ -44,4 +44,10 @@ call plug#begin()
 	" at the time of writing.
 	Plug 'ycm-core/YouCompleteMe'
 
+	" GPG support
+	Plug 'jamessan/vim-gnupg'
+
+	" MD TOC
+	Plug 'mzlogin/vim-markdown-toc'
+
 call plug#end()

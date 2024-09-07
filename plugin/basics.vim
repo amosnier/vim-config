@@ -131,6 +131,3 @@ set nojoinspaces
 
 " Better tab completion. Like Bash, but even a little better.
 set wildmode=longest,list,full
-
-" Expand current file directory, courtesy Practical Vim
-cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'

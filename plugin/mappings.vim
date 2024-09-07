@@ -10,6 +10,9 @@ nmap ä ]
 noremap § `
 noremap ½ ~
 
+" Expand current file directory, courtesy Practical Vim
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+
 " FZF mappings
 nnoremap <leader>t :GFiles --recurse-submodules<CR>
 nnoremap <leader>åt :Locate<space>
@@ -33,3 +36,10 @@ nnoremap <leader>h <Plug>(YCMToggleInlayHints)
 
 " Make mapping
 nnoremap <F7> :make<CR>
+
+" Insert date and time with no space
+cnoremap <expr> <leader>dt DateTimeStringNoSpace()
+
+" Insert markdown and GPG extension, open the file, and accept the default
+" list of recipients
+cnoremap <leader>md .md.gpg<cr>:q<cr>
