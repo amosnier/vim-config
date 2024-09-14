@@ -353,15 +353,15 @@ cnoremap <expr> <leader>dt DateTimeStringNoSpace()
 cnoremap <leader>md .md.gpg<cr>:q<cr>
 
 " YouCompleteMe bindings
-nmap <leader>c <plug>(YCMHover)
+nmap <leader>c <Plug>(YCMHover)
 nmap <leader>w <Plug>(YCMFindSymbolInWorkspace)
 nmap <leader>d <Plug>(YCMFindSymbolInDocument)
+nmap <leader>h <Plug>(YCMToggleInlayHints)
 nnoremap <leader>g :YcmCompleter GoTo<cr>
 nnoremap <leader>r :YcmCompleter GoToReferences<cr>
 nnoremap <leader>z :YcmCompleter FixIt<cr>
 nnoremap <leader>e :YcmCompleter Format<cr>
 vnoremap <leader>e :YcmCompleter Format<cr>
-nnoremap <leader>h <Plug>(YCMToggleInlayHints)
 
 " Bind f5 to pastetoggle, helps with pasting from the clipboard
 set pastetoggle=<f5>
