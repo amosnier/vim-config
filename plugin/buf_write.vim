@@ -7,6 +7,6 @@
 augroup buf_write
 	autocmd!
 	autocmd BufWrite *.glsl %ClangFormat
-	autocmd BufWrite *.{c,cpp,h,hpp,hs,lhs,js,jsx,ts,tsx,prima,rs} YcmCompleter Format
+	autocmd BufWrite *.{c,cpp,h,hpp,hs,lhs,js,jsx,ts,tsx,prima,py,rs} YcmCompleter Format
 augroup END
 
