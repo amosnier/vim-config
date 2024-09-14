@@ -34,3 +34,12 @@ let g:ycm_clangd_binary_path = exepath("clangd")
 
 let g:ycm_enable_semantic_highlighting=1
 let g:ycm_enable_inlay_hints=1
+
+" Python LSP, see https://github.com/python-lsp/python-lsp-server
+let g:ycm_language_server += [
+	\   {
+	\     'name': 'pylsp',
+	\     'cmdline': [ 'pylsp' ],
+	\     'filetypes': [ 'python' ],
+	\   },
+	\ ]
