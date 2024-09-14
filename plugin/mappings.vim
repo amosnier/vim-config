@@ -25,14 +25,14 @@ nnoremap <leader>a *:call FzfRgLiteralString(expand("<cword>"))<CR>
 vnoremap <leader>a :<C-u>call VisualFzfRgLiteralString()<CR>
 
 " YouCompleteMe mappings.
-nmap <leader>c <plug>(YCMHover)
+nmap <leader>c <Plug>(YCMHover)
 nmap <leader>w <Plug>(YCMFindSymbolInWorkspace)
 nmap <leader>d <Plug>(YCMFindSymbolInDocument)
+nmap <leader>h <Plug>(YCMToggleInlayHints)
 nnoremap <leader>g :YcmCompleter GoTo<CR>
 nnoremap <leader>r :YcmCompleter GoToReferences<CR>
 nnoremap <leader>z :YcmCompleter FixIt<CR>
 noremap <leader>e :YcmCompleter Format<CR>
-nnoremap <leader>h <Plug>(YCMToggleInlayHints)
 
 " Make mapping
 nnoremap <F7> :make<CR>
