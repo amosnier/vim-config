@@ -108,9 +108,6 @@ if has('syntax') && has('eval')
 	packadd! matchit
 endif
 
-" Allow local .vimrc
-set exrc
-
 " Enable mouse support
 set mouse=a
 

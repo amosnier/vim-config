@@ -3,7 +3,9 @@
 " we can have one file per configuration section in the plugin directory,
 " which gives us structure clarity. This also allows us to limit this file
 " to:
-" - Setting `nocompatible`.
+" - Setting 'nocompatible'.
+" - Setting 'exrc' (local vimrc, when applicable, is executed before the
+"   plugin files).
 " - Installing external plugins.
 
 " From to vim91/defaults.vim:
@@ -12,6 +14,9 @@
 if &compatible
 	set nocompatible
 endif
+
+" Allow local .vimrc
+set exrc
 
 " Install external plugins
 call plug#begin()
