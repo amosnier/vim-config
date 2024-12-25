@@ -16,10 +16,9 @@ let g:ycm_language_server = []
 "   header files that include other Freetype header files. Oh well...
 "
 " - When it comes to compiler white-listing, the following will help for my
-"   own standard GNU-arm installation. I no longer have it on by default, for
-"   now.
-"	\ '--query-driver=' . $HOME . '/custom/bin/gcc-arm-none-eabi*/bin/arm-none-eabi-*',
+"   own standard GNU-arm installation.
 let g:ycm_clangd_args = [
+	\ '--query-driver=' . $HOME . '/.local/bin/arm-none-eabi-gcc',
 	\ '--compile-commands-dir=.',
 	\ ]
 
