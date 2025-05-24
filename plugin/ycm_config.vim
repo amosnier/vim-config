@@ -42,3 +42,25 @@ let g:ycm_language_server += [
 	\     'filetypes': [ 'python' ],
 	\   },
 	\ ]
+
+" Typst LSP, see https://myriad-dreamin.github.io/tinymist/feature/cli.html
+let g:ycm_language_server += [
+	\   {
+	\     'name': 'tinymist',
+	\     'cmdline': [ 'tinymist' ],
+	\     'filetypes': [ 'typst' ],
+	\   },
+	\ ]
+
+" See :help youcompleteme-customising-highlight-groups. Typst token types.
+let MY_YCM_HIGHLIGHT_GROUP = {
+	\   'text': 'Normal',
+	\   'delim': 'Structure',
+	\   'heading': 'Identifier',
+	\   'pol': 'Identifier',
+	\   'punct': 'Normal',
+\ }
+for tokenType in keys( MY_YCM_HIGHLIGHT_GROUP )
+	call prop_type_add( 'YCM_HL_' . tokenType,
+		\ { 'highlight': MY_YCM_HIGHLIGHT_GROUP[ tokenType ] } )
+endfor
