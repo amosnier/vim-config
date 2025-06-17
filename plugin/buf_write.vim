@@ -15,7 +15,7 @@ endfunction
 " time of writing.
 augroup buf_write
 	autocmd!
-	autocmd BufWrite *.glsl %ClangFormat
+	autocmd BufWrite *.{glsl,vert,frag,tesc,tese,geom,comp} %ClangFormat
 	autocmd BufWrite *.typ call FormatTypst()
 	autocmd BufWrite *.{c,cpp,h,hpp,hs,lhs,js,jsx,ts,tsx,prima,py,rs} YcmCompleter Format
 augroup END

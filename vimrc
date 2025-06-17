@@ -55,4 +55,7 @@ call plug#begin()
 	" MD TOC
 	Plug 'mzlogin/vim-markdown-toc'
 
+	" GLSL
+	Plug 'tikhomirov/vim-glsl'
+
 call plug#end()
