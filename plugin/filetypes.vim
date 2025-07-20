@@ -14,6 +14,6 @@ augroup filetypes
 	autocmd FileType markdown,gitcommit,c,cpp setlocal formatoptions-=2 ai
 	autocmd FileType markdown,cabal,prisma setlocal autoindent
 	" No tabs in Lisp..., or in cmake, cabal, ...
-	autocmd FileType r,lisp,scheme,racket,cmake,cabal,prisma setlocal expandtab
-	autocmd FileType r,prisma setlocal tabstop=2 | setlocal shiftwidth=2
+	autocmd FileType r,lisp,scheme,racket,cmake,cabal,prisma,html,css setlocal expandtab
+	autocmd FileType r,prisma,html,css setlocal tabstop=2 | setlocal shiftwidth=2
 augroup END
