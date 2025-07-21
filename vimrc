@@ -35,7 +35,7 @@ call plug#begin()
 	" Vim visual search (suggested in Practical Vim)
 	Plug 'bronson/vim-visual-star-search'
 
-	" Various go to have plugins from Tim Pope
+	" Various good-to-have plugins from Tim Pope
 	Plug 'tpope/vim-abolish'
 	Plug 'tpope/vim-commentary'
 	Plug 'tpope/vim-fugitive'
