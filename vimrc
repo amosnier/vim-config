@@ -62,4 +62,7 @@ call plug#begin()
 	Plug 'SirVer/ultisnips'
 	Plug 'honza/vim-snippets'
 
+	" Edit tags
+	Plug 'AndrewRadev/tagalong.vim'
+
 call plug#end()
