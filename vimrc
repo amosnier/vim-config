@@ -58,4 +58,8 @@ call plug#begin()
 	" GLSL
 	Plug 'tikhomirov/vim-glsl'
 
+	" Snippets
+	Plug 'SirVer/ultisnips'
+	Plug 'honza/vim-snippets'
+
 call plug#end()
