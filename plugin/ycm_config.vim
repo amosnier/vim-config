@@ -18,9 +18,9 @@ let g:ycm_language_server = []
 " - When it comes to compiler white-listing, the following will help for my
 "   own standard GNU-arm installation:
 "       \ '--query-driver=' . $HOME . '/.local/bin/arm-none-eabi-gcc',
-let g:ycm_clangd_args = [
-	\ '--compile-commands-dir=.',
-	\ ]
+let g:ycm_clangd_args = get(g:, 'ycm_clangd_args',  [
+		\ '--compile-commands-dir=.',
+		\ ])
 
 " YCM clangd related values, as recommended by the LLVM project
 " Let clangd fully control code completion
