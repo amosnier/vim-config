@@ -65,7 +65,4 @@ call plug#begin()
 	" Edit tags
 	Plug 'AndrewRadev/tagalong.vim'
 
-	" Easy align
-	Plug 'junegunn/vim-easy-align'
-
 call plug#end()
