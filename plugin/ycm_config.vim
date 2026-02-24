@@ -35,13 +35,35 @@ let g:ycm_enable_semantic_highlighting=1
 let g:ycm_enable_inlay_hints=1
 
 " Python LSP, see https://github.com/python-lsp/python-lsp-server
-let g:ycm_language_server += [
-	\   {
-	\     'name': 'pylsp',
-	\     'cmdline': [ 'pylsp' ],
-	\     'filetypes': [ 'python' ],
-	\   },
-	\ ]
+" Priority:
+"   1. Activated venv ($VIRTUAL_ENV set)
+"   2. uv-managed project (uv available, no activated venv)
+"   3. pylsp directly in PATH
+" For cases 1 and 2 we do not verify that pylsp is actually present: the check
+" would require a system() call (startup cost) and is CWD-dependent. More
+" importantly, if pylsp is missing where it should be, we want YCM to fail
+" loudly rather than silently fall back to a wrong environment.
+function! s:PylspCmdline()
+  if !empty($VIRTUAL_ENV)
+    return [$VIRTUAL_ENV . '/bin/pylsp']
+  elseif executable('uv')
+    return ['uv', 'run', 'pylsp']
+  elseif executable('pylsp')
+    return ['pylsp']
+  endif
+  return []
+endfunction
+
+let s:pylsp_cmdline = s:PylspCmdline()
+if !empty(s:pylsp_cmdline)
+  let g:ycm_language_server += [
+    \   {
+    \     'name': 'pylsp',
+    \     'cmdline': s:pylsp_cmdline,
+    \     'filetypes': [ 'python' ],
+    \   },
+    \ ]
+endif
 
 " See :help youcompleteme-customising-highlight-groups. Typst token types.
 let MY_YCM_HIGHLIGHT_GROUP = {
