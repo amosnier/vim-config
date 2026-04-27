@@ -74,6 +74,11 @@ if executable('neocmakelsp')
 		\     'filetypes': [ 'cmake' ],
 		\   },
 		\ ]
+
+	augroup CMakeAutoFormat
+		autocmd!
+		autocmd BufWritePre CMakeLists.txt,*.cmake YcmCompleter Format
+	augroup END
 endif
 
 " See :help youcompleteme-customising-highlight-groups. Typst token types.
