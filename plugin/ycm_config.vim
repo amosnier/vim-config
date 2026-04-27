@@ -19,8 +19,8 @@ let g:ycm_language_server = []
 "   own standard GNU-arm installation:
 "       \ '--query-driver=' . $HOME . '/.local/bin/arm-none-eabi-gcc',
 let g:ycm_clangd_args = get(g:, 'ycm_clangd_args',  [
-		\ '--compile-commands-dir=.',
-		\ ])
+	\ '--compile-commands-dir=.',
+	\ ])
 
 " YCM clangd related values, as recommended by the LLVM project
 " Let clangd fully control code completion
@@ -44,25 +44,25 @@ let g:ycm_enable_inlay_hints=1
 " importantly, if pylsp is missing where it should be, we want YCM to fail
 " loudly rather than silently fall back to a wrong environment.
 function! s:PylspCmdline()
-  if !empty($VIRTUAL_ENV)
-    return [$VIRTUAL_ENV . '/bin/pylsp']
-  elseif executable('uv')
-    return ['uv', 'run', 'pylsp']
-  elseif executable('pylsp')
-    return ['pylsp']
-  endif
-  return []
+	if !empty($VIRTUAL_ENV)
+		return [$VIRTUAL_ENV . '/bin/pylsp']
+	elseif executable('uv')
+		return ['uv', 'run', 'pylsp']
+	elseif executable('pylsp')
+		return ['pylsp']
+	endif
+	return []
 endfunction
 
 let s:pylsp_cmdline = s:PylspCmdline()
 if !empty(s:pylsp_cmdline)
-  let g:ycm_language_server += [
-    \   {
-    \     'name': 'pylsp',
-    \     'cmdline': s:pylsp_cmdline,
-    \     'filetypes': [ 'python' ],
-    \   },
-    \ ]
+	let g:ycm_language_server += [
+		\   {
+		\     'name': 'pylsp',
+		\     'cmdline': s:pylsp_cmdline,
+		\     'filetypes': [ 'python' ],
+		\   },
+		\ ]
 endif
 
 " See :help youcompleteme-customising-highlight-groups. Typst token types.
@@ -72,7 +72,7 @@ let MY_YCM_HIGHLIGHT_GROUP = {
 	\   'heading': 'Identifier',
 	\   'pol': 'Identifier',
 	\   'punct': 'Normal',
-\ }
+	\ }
 for tokenType in keys( MY_YCM_HIGHLIGHT_GROUP )
 	call prop_type_add( 'YCM_HL_' . tokenType,
 		\ { 'highlight': MY_YCM_HIGHLIGHT_GROUP[ tokenType ] } )
