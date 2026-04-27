@@ -65,6 +65,17 @@ if !empty(s:pylsp_cmdline)
 		\ ]
 endif
 
+" CMake LSP, see https://github.com/neocmakelsp/neocmakelsp
+if executable('neocmakelsp')
+	let g:ycm_language_server += [
+		\   {
+		\     'name': 'neocmakelsp',
+		\     'cmdline': [ 'neocmakelsp', 'stdio' ],
+		\     'filetypes': [ 'cmake' ],
+		\   },
+		\ ]
+endif
+
 " See :help youcompleteme-customising-highlight-groups. Typst token types.
 let MY_YCM_HIGHLIGHT_GROUP = {
 	\   'text': 'Normal',
