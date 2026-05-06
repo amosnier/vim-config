@@ -65,4 +65,7 @@ call plug#begin()
 	" Edit tags
 	Plug 'AndrewRadev/tagalong.vim'
 
+	" D2
+	Plug 'terrastruct/d2-vim'
+
 call plug#end()
